@@ -3,6 +3,26 @@ document.addEventListener("DOMContentLoaded", function () {
     
     function navigateTo(page) {
         sessionStorage.setItem('location',page);
+        if (sessionStorage.getItem('location')==='Landing-page') {
+            fetchProfileData(sessionStorage.getItem('email'));
+            fetchFriendsData(sessionStorage.getItem('email'),true);
+            document.querySelector('.user-list').addEventListener('click', handleUserClick);
+            document.getElementById("addFriendForm").addEventListener("submit", addFriend);
+            username = sessionStorage.getItem('email') || ''; 
+            recipient = sessionStorage.getItem('recipient') || ''; 
+            joinChat();
+        }else if (sessionStorage.getItem('location')==='account-container') {   
+            fetchProfileDataAccount();
+            document.getElementById('editProfileButton').addEventListener('click', () => {
+            document.getElementById('editModal').style.display = 'flex';
+            });
+            document.getElementById('closeModalButton').addEventListener('click', () => {
+            document.getElementById('editModal').style.display = 'none';
+            });
+            document.getElementById('saveChangesButton').addEventListener('click', saveProfileData);
+            document.getElementById('updateImage').addEventListener('change', handleFileUpload);
+        
+        }
         pages.forEach(p => {
             document.querySelector(`.${p}`).style.display = (p === page) ? "flex" : "none";
         });
@@ -10,24 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Sayfa başlangıcında ana sayfa görünsün
     if (sessionStorage.getItem('location')) {
-        if (sessionStorage.getItem('location')==='Landing-page') {
-            alert(sessionStorage.getItem('email'));
-            fetchProfileData(sessionStorage.getItem('email'));
-            fetchFriendsData(sessionStorage.getItem('email'),true);
-            const savedProfileData = sessionStorage.getItem('profileData');
-            if (savedProfileData) {
-                const data = JSON.parse(savedProfileData);
-                updateProfileUI(data);
-            }
-            const savedFriendsData = sessionStorage.getItem('friendsData');
-            if (savedFriendsData) {
-                const data = JSON.parse(savedFriendsData);
-                updateFriends(data);
-            }
-        }else if (sessionStorage.getItem('location')==='account-container') {  
-            fetchProfileData(sessionStorage.getItem('email'),false);
-            fetchProfileDataAccount(); 
-        }
         navigateTo(sessionStorage.getItem('location'));
     }else {
         navigateTo("main-page");
