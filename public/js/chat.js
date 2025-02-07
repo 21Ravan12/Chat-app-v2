@@ -1,18 +1,17 @@
-
-if (sessionStorage.getItem('location')==='Landing-page') {
-
     // Socket.io bağlantısını başlatıyoruz
     const socket = io('http://192.168.0.158:3002'); // Server'ın adresi
     
     // Kullanıcı adı ve alıcı bilgisi
-    let username = sessionStorage.getItem('email') || ''; // Default to empty if not found
-    let recipient = sessionStorage.getItem('recipient') || ''; // Default to empty if not found
+    let username;
+    let recipient;
     
     // Kullanıcı adı girildikten sonra chat'e katıl
+    function joinChat(){
     if (username) {
       socket.emit('join', username);
     } else {
       console.log("Username is missing. Please log in first.");
+    }
     }
     
     // Mesaj gönderme işlemi
@@ -120,5 +119,5 @@ if (sessionStorage.getItem('location')==='Landing-page') {
       }
     });
     */
-    }
+    
     
