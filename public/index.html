@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sosyal Medya Platformu - Ana Sayfa</title>
+    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link id="account" rel="stylesheet" href="css/acount.css"></link>
+    <link id="landing-page" rel="stylesheet" href="css/landing-page.css"></link>
+    <link id="log-in"" rel="stylesheet" href="css/log-in-sign-up.css"></link>
+    <link id="main-page" rel="stylesheet" href="css/main-page.css"></link>
+</head>
+<body>
+
+<div class="main-page"> 
+        <header class="main-navbar">
+            <div class="platform-logo">
+                <h1>SosyalPlatform</h1>
+            </div>
+            <nav class="navigation-links">
+                <a href="#about-section">Hakkında</a>
+                <a href="#features-section">Özellikler</a>
+                <a href="#signup-section">Kaydol</a>
+                <a onclick="MainToLogin()" class="login-button">Giriş Yap</a>
+            </nav>
+        </header>
+    
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h2>Hayatını Paylaş, Dünyayı Keşfet</h2>
+                <p>Yeni arkadaşlar edinin, içerik paylaşın ve dünya çapında etkileşimde bulunun. Anında bağlantı kurun!</p>
+                <a href="#signup-section" class="primary-cta-button">Kaydol ve Başla</a>
+            </div>
+        </section>
+    
+        <section id="about-section" class="about-platform">
+            <h2>Hakkında</h2>
+            <p>SosyalPlatform, insanların bir araya gelip hikayelerini paylaşabildikleri, fotoğraf ve video gönderileriyle etkileşime girebildikleri, anında mesajlaşabilecekleri bir yer. Hep birlikte keşfetmeye başlayın!</p>
+        </section>
+    
+        <section id="features-section" class="platform-features">
+            <h2>Öne Çıkan Özellikler</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>Gerçek Zamanlı Mesajlaşma</h3>
+                    <p>Sevdiklerinizle anında iletişim kurun, bir sohbeti hiç beklemeden başlatın!</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Hikaye Paylaşımı</h3>
+                    <p>Fotoğraflar, videolar ve metinlerle kendinizi ifade edin.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Takip Et ve Takipçi Kazan</h3>
+                    <p>Diğer kullanıcıları takip edin, yeni arkadaşlar edin ve onların içeriklerini keşfedin.</p>
+                </div>
+            </div>
+        </section>
+    
+        <section id="signup-section" class="signup-call-to-action">
+            <h2>Hemen Kaydolun!</h2>
+            <p>Hızlıca bir hesap oluşturun ve içerik paylaşmaya başlayın!</p>
+            <a onclick="MainToSignUp()" class="primary-cta-button">Kaydol</a>
+        </section>
+    
+        <footer class="main-footer">
+            <p>&copy; 2024 SosyalPlatform - Tüm Hakları Saklıdır.</p>
+        </footer>
+</div>    
+
+<div class="login-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Login</h1>
+        <h2 class="error-message"></h2>
+        <div class="registration-form">
+            <form id="login-form">
+                <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
+                <input type="password" id="password" name="password" class="input-field" placeholder="Password" required><br>
+                <button type="submit" class="submit-button">Log in</button>
+                <a onclick="LoginToForgetpassword()" class="form-link secret-section">Forget your password?</a>
+                <a onclick="LoginToSignin()" class="form-link">Or, sign up</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sign-up-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Sign up</h1>
+        <div class="registration-form">
+            <h2 class="success-message"></h2>
+            <form id="sign-up-form">
+                <input type="text" id="name" name="name" class="input-field" placeholder="Username" required><br>
+                <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
+                <input type="password" id="password" name="password" class="input-field" placeholder="Password" required><br>
+                <input type="text" id="bio" name="bio" class="input-field" placeholder="Bio" required><br>
+                <input type="number" id="birthyear" name="birthyear" class="input-field" placeholder="Birth Year" required><br>
+                <button type="submit" class="submit-button">Sign up</button>
+                <a href="forget_password.html" class="form-link secret-section">Forget your password?</a>
+                <a onclick="SigninToLogin()" class="form-link">Or, log in</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="forget-password-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Account</h1>
+        <h2 class="error-message"></h2>
+        <div class="registration-form">
+            <form id="forget-password-form">
+                <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
+                <button type="submit" class="submit-button">Send code</button>
+                <a onclick="ForgetpasswordToLogin()" class="form-link">Or, Log in</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="forget-code-insert-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Insert the code</h1>
+        <div class="registration-form">
+            <h2 class="error-message"></h2>
+            <form id="forget-code-form">
+                <input type="text" id="code" name="code" class="input-field" placeholder="Code" required><br>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="code-insert-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Insert the code</h1>
+        <div class="registration-form">
+            <h2 class="error-message"></h2>
+            <form id="enter-code-form">
+                <input type="text" id="code" name="code" class="input-field" placeholder="Code" required><br>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="Landing-page">
+    <header>
+        <div style="flex-grow: 1; margin-left: 25px;">
+            <h1>Social Feed</h1>
+        </div>
+        <div class="profile-btn">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture" id="profileImage" onclick="LandingToAccount()">
+        </div>
+        <button class="settings-btn">
+            <i class="fas fa-cog"></i> <!-- Single gear/cog icon -->
+        </button>
+        
+    </header>
+
+    <div class="main-container">
+        <!-- Sol tarafın açılması ve kapanması için -->
+         
+        <div class="left-container">
+            <h1 class="left-container-name">Social Feed</h1>
+        
+            <div class="user-list-1">
+                <button class="add-user-btn" onclick="toggleAddUser()">Arkadaş Ekle</button>
+                <div class="add-user-container" id="add-user-container">
+                    <form id="addFriendForm">
+                        <input placeholder="Kullanıcı adı girin..." type="text" id="friend" name="friend">
+                        <button class="settings-btn" type="submit">Ekle</button>
+                    </form>
+                </div> 
+            </div>
+        
+            <div class="user-list"></div>
+        </div>
+        
+
+        <div class="chat-container" id="chat-container">
+            <button class="toggle-btn" onclick="toggleLeftContainer()">
+                <i class="fas fa-arrow-right"></i> 
+            </button>            
+            <div class="chat-box" id="chat-box"></div>
+            <div class="input-container">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button onclick="sendPrivateMessage()">
+                    <i class="fas fa-paper-plane"></i> <!-- Paper plane icon for send -->
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="account-container">
+    <div class="profile-wrapper">
+        <div class="profile-card">
+            <div class="profile-header">
+                <img id="profileImageAccount" class="profile-image" src="https://via.placeholder.com/150" alt="Profile Image">
+                <h1 id="nameAccount" class="profile-name">John Doe</h1>
+                <p id="emailAccount" class="profile-email">Email: johndoe@example.com</p>
+            </div>
+
+            <div class="profile-details">
+                <div class="profile-detail bio-section">
+                    <h3>Bio</h3>
+                    <p id="bioAccount">A passionate developer who loves coding and coffee.</p>
+                </div>
+                <div class="profile-detail age-section">
+                    <h3>Age</h3>
+                    <p id="age">25</p>
+                </div>
+            </div>
+
+            <button class="profile-edit-button" id="editProfileButton">Edit Profile</button>
+        </div>
+    </div>
+
+    <div class="profile-modal" id="editModal">
+        <div class="modal-content">
+            <h2>Edit Your Profile</h2>
+            <label for="updateName">Name:</label>
+            <input id="updateName" type="text" placeholder="Enter your name">
+    
+            <label for="updateBio">Bio:</label>
+            <textarea id="updateBio" placeholder="Tell something about yourself"></textarea>
+    
+            <label for="updateAge">Age:</label>
+            <input id="updateAge" type="number" placeholder="Enter your age">
+    
+            <input type="file" id="updateImage" accept="image/*">
+            <input type="hidden" id="profileImageBase64">
+            <img id="profileImagePreview" src="" alt="Image Preview" class="image-preview">
+
+            <div class="modal-buttons">
+                <button id="saveChangesButton" class="save-button">Save Changes</button>
+                <button id="closeModalButton" class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/rooter.js"></script>
+
+</body>
+</html>

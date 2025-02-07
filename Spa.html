@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sosyal Medya Platformu - Ana Sayfa</title>
+    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style id="account">
+.login-page{
+    display: none;
+}
+.sign-up-page{
+    display: none;
+}
+.forget-password-page{
+    display: none;
+}
+.forget-code-insert-page{
+    display: none;
+}
+.code-insert-page{
+    display: none;
+}
+.Landing-page{
+    display: none;
+}
+.main-page{
+    display: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.account-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-wrapper {
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+}
+
+.profile-card {
+    background: #1f1f1f;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    text-align: center;
+    padding: 30px;
+}
+
+.profile-header {
+    margin-bottom: 30px;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #1E90FF;
+}
+
+.profile-name {
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.profile-email {
+    font-size: 1.1rem;
+    color: #aaa;
+}
+
+.profile-details {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.profile-detail {
+    margin-bottom: 20px;
+}
+
+.profile-detail h3 {
+    font-size: 1.3rem;
+    color: #1E90FF;
+    margin-bottom: 10px;
+}
+
+.profile-detail p {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+}
+
+.profile-edit-button {
+    background-color: #1E90FF;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.profile-edit-button:hover {
+    background-color: #4682B4;
+}
+
+.profile-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #1f1f1f;
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+    margin-bottom: 30px;
+    color: #1E90FF;
+    font-size: 1.8rem;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+
+.modal-content input, 
+.modal-content textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-button {
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.save-button:hover {
+    background-color: #4682B4;
+}
+
+.cancel-button {
+    background-color: #444;
+    color: #e0e0e0;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.cancel-button:hover {
+    background-color: #555;
+}
+
+.image-preview {
+    max-width: 150px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+    </style>
+    <style id="landing-page">
+.login-page{
+    display: none;
+}
+.sign-up-page{
+    display: none;
+}
+.forget-password-page{
+    display: none;
+}
+.forget-code-insert-page{
+    display: none;
+}
+.code-insert-page{
+    display: none;
+}
+.account-container{
+    display: none;
+}
+.main-page{
+    display: none;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1c1c1c;
+    color: #e0e0e0;
+    display: flex;
+    height: 100dvh;
+    flex-direction: column;
+}
+.Landing-page{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #2c2c2c;
+    color: #f3f3f3;
+    font-size: 12px;
+    text-align: start;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    align-items: center;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profile-btn img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 0.3s ease-out, transform 0.2s ease; /* Added transition for transform and color */
+}
+
+.profile-btn img:hover {
+        transform: scale(1.15); /* Slightly scale up the button */
+}
+
+.settings-btn {
+        background-color: transparent;
+        color: lightgray;
+        border: none;
+        margin: 6px;
+        cursor: pointer;
+        transition: 0.3s ease-out, transform 0.2s ease; /* Added transition for transform and color */
+    }
+
+    .settings-btn:hover {
+        color: rgb(224, 223, 223);
+        transform: scale(1.15); /* Slightly scale up the button */
+    }
+
+    .settings-btn i {
+        font-size: 38.5px;
+    }
+
+.add-user-btn {
+    padding: 12px;
+    margin: 12px 0;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.add-user-btn:hover {
+    background-color: #0056b3;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.left-container {
+    width: 0; /* Başlangıçta kapalı */
+    height: 98dvh; /* Tam ekran yüksekliği */
+    background-color: rgb(0, 0, 0); /* Siyah arka plan */
+    border-right: 10px solid #242424; /* Kenarlık düzeltildi */
+    border-top: 10px solid #242424;
+    border-bottom: 10px solid #242424;
+    overflow: hidden; /* İçerik taşmasını engeller */
+    transition: width 0.3s ease; /* Yumuşak genişleme efekti */
+    position: fixed; /* Sayfada sabit durması için */
+    top: 0px; /* px birimi eklendi */
+    left: 0;
+    z-index: 1000; /* Diğer içeriklerin üstünde kalır */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.34); /* Daha fazla gölge */
+
+}
+
+.left-container.open {
+    width: 330px; /* Açıldığında genişliği belirlenmiş olur */
+}
+
+
+
+/* Toggle Button */
+.toggle-btn {
+    z-index: 1001;
+    position: absolute;
+    top: -60px;
+    left: 0px;
+    background-color: #242424; /* Yeşil renk, dikkat çekici ve uyumlu */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Yuvarlak buton */
+    padding: 26px 6px; /* İçerideki simge için daha geniş alan */
+    font-size: 15px; /* Ok simgesi için daha büyük boyut */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Yumuşak geçişler */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Simgeyi ortalar */
+
+}
+
+.toggle-btn:hover {
+    background-color: #242424; /* Hover durumunda hafif koyulaşma */
+}
+
+.toggle-btn.rotated i {
+    transform: rotate(180deg); /* İkonu 180 derece döndürür */
+}
+.left-container-name {
+    font-size: 25px; /* Yazı boyutu */
+    font-weight: bold; /* Kalın yazı */
+    color: white; /* Yazı rengi */
+    background-color: #2c2c2c; /* Arka plan rengi */
+    padding: 20px;
+    padding-bottom: 30px; /* İç boşluk */
+    text-align: center; /* Metni ortala */
+    margin: 0;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    background-color: #252525;
+    padding: 8px;
+    border-right: 1px solid #333;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-list-1 {
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    padding: 14px;
+    border-right: 1px solid #333;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Add this to your CSS file */
+.friend-profile-image {
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.friend-name {
+    margin-top: 16px;
+    font-size: 18px;
+    display: flex;
+    justify-self: center;
+}
+
+.user {
+    padding: 0px 12px;
+    margin: 12px 0;
+    background-color: #333;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.user:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+.user span {
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+}
+
+.chat-container {
+    width: fit-content;
+    background-color: #2c2c2c;
+    border-left: 1px solid #333;
+    padding: 0px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end; /* Change this from space-between to flex-end */
+    flex-grow: 1;
+}
+
+.chat-box {
+    margin-top: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 15px;
+    overflow-y: auto;
+    display: block;
+    flex-direction: column; /* Remove column-reverse to fix the message order */
+    flex-grow: 1;
+    height: 50dvh;
+}
+
+#message {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    list-style-type: none;
+}
+
+.chat-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    color: #e0e0e0;
+}
+
+.my-message {
+    background-color: #4CAF50;
+    color: white;
+    margin-left: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 30ch;
+    min-width: 15ch;
+    padding: 0px 12px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative;
+}
+.my-message-name {
+position: absolute;
+left: 1px;
+top: 1px;
+font-size: 10px;
+color: white;
+}
+
+.other-message {
+    background-color: #e3f2fd;
+    color: black;
+    margin-right: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 30ch;
+    min-width: 15ch;
+    padding: 0px 12px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.other-message-name {
+position: absolute;
+left: 1px;
+top: 1px;
+font-size: 10px;
+color: black;
+}
+
+.input-container {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-container input {
+    width: 90%;
+    padding: 10px;
+    background-color: #333;
+    border: none;
+    border-radius: 20px;
+    
+    color: #e0e0e0;
+    outline: none;
+}
+
+.input-container button {
+    width: 10%;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    margin-left: 10px;
+    outline: none;
+}
+
+.input-container button:hover {
+    background-color: #0056b3;
+}
+.add-user-container {
+    display: none; /* Varsayılan olarak gizli */
+    margin-top: 15px;
+    text-align: center;
+}
+
+.add-user-container input {
+    width: 80%;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #e0e0e0;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.add-user-container input:focus {
+    border-color: #007bff;
+}
+
+    </style>
+    <style id="log-in" >
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #e0e0e0; /* Light grey text */
+}
+.main-page{
+    display: none;
+}
+
+.login-page{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-up-page{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.forget-password-page{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.forget-code-insert-page{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.code-insert-page{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.account-container{
+    display: none;
+}
+.Landing-page{
+    display: none;
+}
+/* Main container with dark theme styling */
+.registration-container {
+    background-color: #1f1f1f; /* Dark container background */
+    padding: 20px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+/* Heading style for the form title */
+.registration-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1E90FF; /* Blue for title */
+    font-size: 2em;
+}
+
+/* Styling for input fields in the registration form */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #555; /* Dark border */
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    background-color: #333; /* Dark input background */
+    color: #e0e0e0; /* Light text inside inputs */
+    box-sizing: border-box;
+}
+
+/* Focus effect on input fields */
+.input-field:focus {
+    border-color: #1E90FF; /* Blue focus border */
+    outline: none;
+}
+
+/* Styling for submit button */
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1E90FF; /* Blue button background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for the button */
+.submit-button:hover {
+    background-color: #4682B4; /* Darker blue on hover */
+}
+
+/* Styling for the link below the form */
+.form-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #888; /* Light grey for links */
+    font-size: 0.9em;
+}
+
+/* Hover effect for the link */
+.form-link:hover {
+    color: #1E90FF; /* Blue color on hover */
+}
+
+/* Container for the registration form fields */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Success message for registration */
+.success-message {
+    color: #32CD32; /* Green success text */
+    display: none;
+}
+
+/* Hidden secret section */
+.secret-section {
+    display: none;
+}
+
+/* Error message for invalid form submission */
+.error-message {
+    color: #FF4500; /* Orange-red for error text */
+    display: none;
+}
+
+    </style>
+    <style id="main-page" >
+.login-page{
+    display: none;
+}
+.sign-up-page{
+    display: none;
+}
+.forget-password-page{
+    display: none;
+}
+.forget-code-insert-page{
+    display: none;
+}
+.code-insert-page{
+    display: none;
+}
+    .account-container{
+        display: none;
+    }
+    .Landing-page{
+        display: none;
+    }
+    
+    
+   /* Genel Stiller */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #1b1b1b;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+/* Navbar */
+.main-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.platform-logo h1 {
+    font-size: 2em;
+}
+
+.navigation-links a {
+    margin: 0 15px;
+    font-size: 1.2em;
+    color: #ddd;
+    transition: color 0.3s ease;
+}
+
+.navigation-links a:hover {
+    color: #00bcd4;
+}
+
+.login-button {
+    background-color: #00bcd4;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #008c9e;
+}
+
+/* Hero Bölümü */
+.hero-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 40px;
+    background-color: #212121;
+}
+
+.hero-image-container img {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin: 20px 0;
+    color: #ccc;
+}
+
+.primary-cta-button {
+    display: inline-block;
+    background-color: #00bcd4;
+    padding: 12px 30px;
+    color: white;
+    font-size: 1.1em;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.primary-cta-button:hover {
+    background-color: #008c9e;
+}
+
+/* Hakkında Bölümü */
+.about-platform {
+    padding: 60px 40px;
+    text-align: center;
+    background-color: #2c2c2c;
+}
+
+.about-platform h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.about-platform p {
+    font-size: 1.2em;
+    color: #aaa;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Özellikler Bölümü */
+.platform-features {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 40px;
+    background-color: #333;
+    text-align: center;
+}
+
+.platform-features h2 {
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    color: #fff;
+}
+
+.feature-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.feature-item {
+    width: 30%;
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.feature-item h3 {
+    font-size: 1.8em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1.1em;
+    color: #ccc;
+}
+
+/* Kayıt Bölümü */
+.signup-call-to-action {
+    text-align: center;
+    padding: 80px 40px;
+    background-color: #00bcd4;
+    color: white;
+}
+
+.signup-call-to-action h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.signup-call-to-action p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+/* Footer */
+.main-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: white;
+    font-size: 1em;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="main-page"> 
+        <header class="main-navbar">
+            <div class="platform-logo">
+                <h1>SosyalPlatform</h1>
+            </div>
+            <nav class="navigation-links">
+                <a href="#about-section">Hakkında</a>
+                <a href="#features-section">Özellikler</a>
+                <a href="#signup-section">Kaydol</a>
+                <a onclick="MainToLogin()" class="login-button">Giriş Yap</a>
+            </nav>
+        </header>
+    
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h2>Hayatını Paylaş, Dünyayı Keşfet</h2>
+                <p>Yeni arkadaşlar edinin, içerik paylaşın ve dünya çapında etkileşimde bulunun. Anında bağlantı kurun!</p>
+                <a href="#signup-section" class="primary-cta-button">Kaydol ve Başla</a>
+            </div>
+            <div class="hero-image-container">
+                <img src="hero-image.jpg" alt="Sosyal Platform Tanıtım Görseli">
+            </div>
+        </section>
+    
+        <section id="about-section" class="about-platform">
+            <h2>Hakkında</h2>
+            <p>SosyalPlatform, insanların bir araya gelip hikayelerini paylaşabildikleri, fotoğraf ve video gönderileriyle etkileşime girebildikleri, anında mesajlaşabilecekleri bir yer. Hep birlikte keşfetmeye başlayın!</p>
+        </section>
+    
+        <section id="features-section" class="platform-features">
+            <h2>Öne Çıkan Özellikler</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>Gerçek Zamanlı Mesajlaşma</h3>
+                    <p>Sevdiklerinizle anında iletişim kurun, bir sohbeti hiç beklemeden başlatın!</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Hikaye Paylaşımı</h3>
+                    <p>Fotoğraflar, videolar ve metinlerle kendinizi ifade edin.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Takip Et ve Takipçi Kazan</h3>
+                    <p>Diğer kullanıcıları takip edin, yeni arkadaşlar edin ve onların içeriklerini keşfedin.</p>
+                </div>
+            </div>
+        </section>
+    
+        <section id="signup-section" class="signup-call-to-action">
+            <h2>Hemen Kaydolun!</h2>
+            <p>Hızlıca bir hesap oluşturun ve içerik paylaşmaya başlayın!</p>
+            <a onclick="MainToSignUp()" class="primary-cta-button">Kaydol</a>
+        </section>
+    
+        <footer class="main-footer">
+            <p>&copy; 2024 SosyalPlatform - Tüm Hakları Saklıdır.</p>
+        </footer>
+</div>    
+
+<div class="login-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Login</h1>
+        <h2 class="error-message"></h2>
+        <div class="registration-form">
+            <form id="login-form">
+                <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
+                <input type="password" id="password" name="password" class="input-field" placeholder="Password" required><br>
+                <button type="submit" class="submit-button">Log in</button>
+                <a onclick="LoginToForgetpassword()" class="form-link secret-section">Forget your password?</a>
+                <a onclick="LoginToSignin()" class="form-link">Or, sign up</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sign-up-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Sign up</h1>
+        <div class="registration-form">
+            <h2 class="success-message"></h2>
+            <form id="sign-up-form">
+                <input type="text" id="name" name="name" class="input-field" placeholder="Username" required><br>
+                <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
+                <input type="password" id="password" name="password" class="input-field" placeholder="Password" required><br>
+                <input type="text" id="bio" name="bio" class="input-field" placeholder="Bio" required><br>
+                <input type="number" id="birthyear" name="birthyear" class="input-field" placeholder="Birth Year" required><br>
+                <button type="submit" class="submit-button">Sign up</button>
+                <a href="forget_password.html" class="form-link secret-section">Forget your password?</a>
+                <a onclick="SigninToLogin()" class="form-link">Or, log in</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="forget-password-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Account</h1>
+        <h2 class="error-message"></h2>
+        <div class="registration-form">
+            <form id="forget-password-form">
+                <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
+                <button type="submit" class="submit-button">Send code</button>
+                <a onclick="ForgetpasswordToLogin()" class="form-link">Or, Log in</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="forget-code-insert-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Insert the code</h1>
+        <div class="registration-form">
+            <h2 class="error-message"></h2>
+            <form id="forget-code-form">
+                <input type="text" id="code" name="code" class="input-field" placeholder="Code" required><br>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="code-insert-page">
+    <div class="registration-container">
+        <h1 class="registration-header">Insert the code</h1>
+        <div class="registration-form">
+            <h2 class="error-message"></h2>
+            <form id="enter-code-form">
+                <input type="text" id="code" name="code" class="input-field" placeholder="Code" required><br>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="Landing-page">
+    <header>
+        <div style="flex-grow: 1; margin-left: 25px;">
+            <h1>Social Feed</h1>
+        </div>
+        <div class="profile-btn">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture" id="profileImage" onclick="LandingToAccount()">
+        </div>
+        <button class="settings-btn">
+            <i class="fas fa-cog"></i> <!-- Single gear/cog icon -->
+        </button>
+        
+    </header>
+
+    <div class="main-container">
+        <!-- Sol tarafın açılması ve kapanması için -->
+         
+        <div class="left-container">
+            <h1 class="left-container-name">Social Feed</h1>
+        
+            <div class="user-list-1">
+                <button class="add-user-btn" onclick="toggleAddUser()">Arkadaş Ekle</button>
+                <div class="add-user-container" id="add-user-container">
+                    <form id="addFriendForm">
+                        <input placeholder="Kullanıcı adı girin..." type="text" id="friend" name="friend">
+                        <button class="settings-btn" type="submit">Ekle</button>
+                    </form>
+                </div> 
+            </div>
+        
+            <div class="user-list"></div>
+        </div>
+        
+
+        <div class="chat-container" id="chat-container">
+            <button class="toggle-btn" onclick="toggleLeftContainer()">
+                <i class="fas fa-arrow-right"></i> 
+            </button>            
+            <div class="chat-box" id="chat-box"></div>
+            <div class="input-container">
+                <input type="text" id="message-input" placeholder="Type your message...">
+                <button onclick="sendPrivateMessage()">
+                    <i class="fas fa-paper-plane"></i> <!-- Paper plane icon for send -->
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="account-container">
+    <div class="profile-wrapper">
+        <div class="profile-card">
+            <div class="profile-header">
+                <img id="profileImageAccount" class="profile-image" src="https://via.placeholder.com/150" alt="Profile Image">
+                <h1 id="nameAccount" class="profile-name">John Doe</h1>
+                <p id="emailAccount" class="profile-email">Email: johndoe@example.com</p>
+            </div>
+
+            <div class="profile-details">
+                <div class="profile-detail bio-section">
+                    <h3>Bio</h3>
+                    <p id="bioAccount">A passionate developer who loves coding and coffee.</p>
+                </div>
+                <div class="profile-detail age-section">
+                    <h3>Age</h3>
+                    <p id="age">25</p>
+                </div>
+            </div>
+
+            <button class="profile-edit-button" id="editProfileButton">Edit Profile</button>
+        </div>
+    </div>
+
+    <div class="profile-modal" id="editModal">
+        <div class="modal-content">
+            <h2>Edit Your Profile</h2>
+            <label for="updateName">Name:</label>
+            <input id="updateName" type="text" placeholder="Enter your name">
+    
+            <label for="updateBio">Bio:</label>
+            <textarea id="updateBio" placeholder="Tell something about yourself"></textarea>
+    
+            <label for="updateAge">Age:</label>
+            <input id="updateAge" type="number" placeholder="Enter your age">
+    
+            <input type="file" id="updateImage" accept="image/*">
+            <input type="hidden" id="profileImageBase64">
+            <img id="profileImagePreview" src="" alt="Image Preview" class="image-preview">
+
+            <div class="modal-buttons">
+                <button id="saveChangesButton" class="save-button">Save Changes</button>
+                <button id="closeModalButton" class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    document.getElementById('log-in').disabled=true;
+    document.getElementById('landing-page').disabled=true;
+    document.getElementById('account').disabled=true;
+    
+    function MainToLogin(){
+        sessionStorage.setItem('location','login');
+        document.getElementById('main-page').disabled=true; 
+        document.getElementById('log-in').disabled=false;
+    }
+    
+    function MainToSignUp(){
+        sessionStorage.setItem('location','signin');
+        document.getElementById('main-page').disabled=true; 
+        document.getElementById('log-in').disabled=false;
+        document.querySelector('.login-page').style.display='none';
+        document.querySelector('.sign-up-page').style.display='flex';
+    }
+    
+    function LoginToSignin(){
+        sessionStorage.setItem('location','signin');
+        document.querySelector('.login-page').style.display='none';
+        document.querySelector('.sign-up-page').style.display='flex';
+    }
+    
+    function SigninToLogin(){
+        sessionStorage.setItem('location','login');
+        document.querySelector('.login-page').style.display='flex';
+        document.querySelector('.sign-up-page').style.display='none';
+    }
+    
+    function LoginToForgetpassword(){
+        document.querySelector('.login-page').style.display='none';
+        document.querySelector('.forget-password-page').style.display='flex';
+    }
+    
+    function ForgetpasswordToLogin(){
+        document.querySelector('.login-page').style.display='flex';
+        document.querySelector('.forget-password-page').style.display='none';
+    }
+    
+    function ToForgetCode(){
+        document.querySelector('.forget-password-page').style.display='none';
+        document.querySelector('.forget-code-insert-page').style.display='flex';
+    }
+    
+    function ToEnterCode(){
+        document.querySelector('.sign-up-page').style.display='none';
+        document.querySelector('.code-insert-page').style.display='flex';
+    }
+    
+    function ToLandingPage(){
+        sessionStorage.setItem('location','landing');
+        document.querySelector('.login-page').style.display='none';
+        document.querySelector('.forget-code-insert-page').style.display='none';
+        document.querySelector('.code-insert-page').style.display='none';
+        document.getElementById('log-in').disabled=true;
+        alert(sessionStorage.getItem('email'));
+        fetchProfileData(sessionStorage.getItem('email'));
+        fetchFriendsData(sessionStorage.getItem('email'),true);
+        document.getElementById('landing-page').disabled=false;
+        setTimeout(function() {
+        window.location.reload();  // This will reload the page
+        }, 100); 
+    }
+    
+    function AccountToLanding(){
+        sessionStorage.setItem('location','landing');
+        document.getElementById('landing-page').disabled=true;
+        document.getElementById('account').disabled=false;
+    }
+    
+    function LandingToAccount(){
+        sessionStorage.setItem('location','account');
+        document.getElementById('landing-page').disabled=true;
+        document.getElementById('account').disabled=false;
+        fetchProfileDataAccount();
+    }
+    
+    try {
+    let location=sessionStorage.getItem('location');
+    if (location==='login') {
+        document.getElementById('log-in').disabled=false;
+        document.getElementById('main-page').disabled=true; 
+    }else if(location==='signin'){
+        document.getElementById('log-in').disabled=false;
+        document.getElementById('main-page').disabled=true; 
+        document.querySelector('.login-page').style.display='none';
+        document.querySelector('.sign-up-page').style.display='flex';
+    }else if(location==='landing'){
+        document.getElementById('main-page').disabled=true; 
+        document.getElementById('landing-page').disabled=false;
+        fetchProfileData(sessionStorage.getItem('email'));
+    }else if(location==='account'){
+        document.getElementById('main-page').disabled=true; 
+        document.getElementById('account').disabled=false;
+    }       
+    }catch{}
+
+
+
+    function toggleLeftContainer() {
+    const button = document.querySelector('.toggle-btn');
+    button.classList.toggle('rotated');
+    const leftContainer = document.querySelector(".left-container");
+    leftContainer.classList.toggle("open"); // Açma/Kapama
+    if (leftContainer.classList.contains('open')) {
+        button.style.left = "330px"; // Açılınca içeride kalacak
+    } else {
+        button.style.left = "0px"; // Kapanınca dışarı çıkacak
+    }
+}
+
+
+
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            sessionStorage.setItem('email',formData.get('email'));
+            const data = {
+                email: formData.get('email'),
+                password: formData.get('password')
+            };
+
+            fetch("http://192.168.0.158:3001/api-login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                if (data.message == "Login successful!") {
+
+                    ToLandingPage();
+                }else{
+                    document.querySelector('.error').textContent = data.message;
+                    document.querySelector('.error').style.display = "block";
+                    document.querySelector('.secret').style.display = "block";
+                }
+                
+
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred: " + error);
+            });
+        });
+
+    document.getElementById("forget-password-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            sessionStorage.setItem('email',formData.get('email'));
+            const data = {
+                email: formData.get('email')
+            };
+
+            fetch("http://192.168.0.158:3001/api-forget", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                if (data.message == "Password recovery code sent successfully!") {
+                    ToForgetCode();
+                }else{
+                    document.querySelector('.error').textContent = data.message;
+                    document.querySelector('.error').style.display = "block";
+                   
+                }
+                
+
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred: " + error);
+            });
+        });
+
+    document.getElementById("forget-code-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = {
+                code: formData.get('code'),
+            };
+
+            fetch("http://192.168.0.158:3001/api-forget-end", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+               
+                if (data.message == "Code successfully verified!") {
+                    ToLandingPage();
+                }else{
+                    document.querySelector('.error').textContent = data.message;
+                    document.querySelector('.error').style.display = "block";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error!");
+            });
+        });
+
+    document.getElementById("sign-up-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.querySelector('.succes').style.color = "green";
+            document.querySelector('.succes').textContent = 'Wait a minut....';
+            document.querySelector('.succes').style.display = "block";
+
+            const formData = new FormData(event.target);
+            sessionStorage.setItem('email',formData.get('email'));
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                bio: formData.get('bio'),
+                birthyear: formData.get('birthyear')
+            };
+
+            fetch("http://192.168.0.158:3001/api-enter", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message == "Verification code sent successfully!") {
+                    ToEnterCode();
+                }
+                document.querySelector('.succes').textContent = data.error;
+                document.querySelector('.succes').style.color = "red";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error!");
+            });
+        });
+
+    document.getElementById("enter-code-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = {
+                code: formData.get('code'),
+            };
+
+            fetch("http://192.168.0.158:3001/api-enter-end", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+               
+                if (data.message == "User successfully signed up!") {
+                    ToLandingPage();
+                }else{
+                    document.querySelector('.error').textContent = data.message;
+                    document.querySelector('.error').style.display = "block";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error!");
+            });
+        });
+
+
+
+
+async function fetchProfileData(email,Allow=true) {
+    try {
+        if (Allow) {
+        const savedProfileData = sessionStorage.getItem('profileData');
+        if (savedProfileData) {
+            console.log("Profile data loaded from sessionStorage.");
+            const data = JSON.parse(savedProfileData);
+            updateProfileUI(data);
+            return; 
+        }
+        }
+        const response = await fetch('http://192.168.0.158:3001/api-profile-get', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        // Check if data contains profileImage and name, then update UI
+        updateProfileUI(data);
+
+        // Store the profile data in sessionStorage
+        sessionStorage.setItem('profileData', JSON.stringify(data));
+
+    } catch (error) {
+        console.error('Error fetching profile data:', error);
+        document.getElementById('errorMessage').textContent = 'Failed to load profile data. Please try again later.';
+    }
+}
+
+function updateProfileUI(data) {
+    sessionStorage.setItem('username',data.name);
+    if (data.profileImage) {
+        const profileImageElement = document.getElementById('profileImage');
+        if (profileImageElement) {
+            profileImageElement.src = data.profileImage;
+            sessionStorage.setItem('username',data.name);
+        }
+    }
+
+    // Update the username if it exists
+    
+}
+
+window.addEventListener('load', () => {
+    const savedProfileData = sessionStorage.getItem('profileData');
+    if (savedProfileData) {
+        const data = JSON.parse(savedProfileData);
+        updateProfileUI(data);
+    }
+});
+
+
+async function fetchFriendsData(email,Allow) {
+    try {
+        if (Allow) {
+        const savedProfileData = sessionStorage.getItem('friendsData');
+        if (savedProfileData) {
+            console.log("Friends data loaded from sessionStorage.");
+            const data = JSON.parse(savedProfileData);
+            updateFriends(data);
+            return; 
+        }
+        }
+
+        const response = await fetch('http://192.168.0.158:3001/api-friends-get', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        updateFriends(data);
+
+        sessionStorage.setItem('friendsData', JSON.stringify(data));
+
+    } catch (error) {
+        console.error('Error fetching profile data:', error);
+        document.getElementById('errorMessage').textContent = 'Failed to load profile data. Please try again later.';
+    }
+}
+
+function updateFriends(data) {
+    if (data.friends) {
+        const user_list = document.querySelector('.user-list');
+        if (!user_list) {
+            console.error('User list element not found.');
+            return;
+        }
+
+        user_list.innerHTML = ''; // Clear previous content
+
+        let count = data.friends.length;
+        for (let index = 0; index < count; index++) {
+            const friend = data.friends[index];
+            const activityDiv = document.createElement('div');
+            activityDiv.setAttribute('email', friend.email);
+            activityDiv.className = 'user friend-selected';
+
+            // Create Profile Image Div
+            const profileImageDiv = document.createElement('div');
+            profileImageDiv.className = 'friend-profile-image';
+            
+            // Set the background image with fallback
+            profileImageDiv.style.backgroundImage = `url(${friend.profileImage || 'default-profile.jpg'})`; // Fallback image
+
+            // Create and set the friend's name
+            const nameDiv = document.createElement('div');
+            nameDiv.textContent = friend.name; // Friend's name
+
+            nameDiv.setAttribute('email', friend.email);
+            nameDiv.className = 'friend-name friend-selected ';
+
+            // Append the profile image and name to the user div
+            activityDiv.appendChild(profileImageDiv);
+            activityDiv.appendChild(nameDiv);
+
+            // Append the user div to the user list
+            user_list.appendChild(activityDiv);
+        }
+    } else {
+        console.error('No friends data found.');
+    }
+}
+
+
+window.addEventListener('load', () => {
+    const savedFriendsData = sessionStorage.getItem('friendsData');
+    if (savedFriendsData) {
+        const data = JSON.parse(savedFriendsData);
+        updateFriends(data);
+    }
+});
+ 
+    // Handle the user addition form
+document.getElementById("addFriendForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const data = {
+            friendEmail: formData.get('friend'),
+            email: sessionStorage.getItem('email'),
+        };
+
+        fetch("http://192.168.0.158:3001/api-friend-add", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === "Friend added successfully!") {
+                fetchFriendsData(sessionStorage.getItem('email'),false);
+          
+            } else {
+                alert("Failed to add friend");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred: " + error.message);
+        });
+    });
+
+document.querySelector('.user-list').addEventListener('click', async (event) => {
+  document.querySelectorAll('.chat-box').forEach((chatbox) => {
+    chatbox.style.display = 'none';
+  });
+
+  console.log('Clicked element:', event.target);
+
+  if (!event.target.classList.contains('friend-selected')) return;
+
+  const toEmail = event.target.getAttribute('email').trim(); // Get email from the data-email attribute
+  const fromEmail = sessionStorage.getItem('email'); // Store email in sessionStorage
+
+  if (!fromEmail) {
+    console.error('Gönderen kullanıcı bulunamadı.');
+    return;
+  }
+
+  sessionStorage.setItem('recipient', toEmail);
+
+  const container = document.getElementById('chat-container');
+  if (!container) {
+    console.error('Chat container bulunamadı.');
+    return;
+  }
+
+  let chatBox = document.getElementById(`chatbox-${toEmail}`);
+  if (!chatBox) {
+    chatBox = document.createElement('div');
+    chatBox.classList.add('chat-box');
+    chatBox.id = `chatbox-${toEmail}`;
+    container.prepend(chatBox);
+  }
+
+  chatBox.style.display = 'flex';
+  chatBox.innerHTML = ''; // Clear previous content
+
+  const loadingMessage = document.createElement('div');
+  loadingMessage.textContent = 'Loading messages...';
+  chatBox.appendChild(loadingMessage);
+
+  try {
+    const response = await fetch('http://192.168.0.158:3001/api-chat-get', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sender: fromEmail, receiver: toEmail }), // Use emails here
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log('Server response:', result);
+
+    chatBox.innerHTML = ''; // Clear loading message
+
+    if (result.length === 0) {
+      const noMessagesDiv = document.createElement('div');
+      noMessagesDiv.textContent = 'No messages yet.';
+      chatBox.appendChild(noMessagesDiv);
+    } else {
+      result.forEach((message) => {
+        const activityDiv = document.createElement('div');
+        activityDiv.classList.add(message.from === fromEmail ? 'my-message' : 'other-message');
+
+        const strongElement = document.createElement('strong');
+        strongElement.className = message.from === fromEmail ? 'my-message-name' : 'other-message-name';
+        strongElement.textContent = `${message.from}:`;
+
+        const messageText = document.createElement('p');
+        messageText.appendChild(strongElement);
+        messageText.appendChild(document.createTextNode(` ${message.message}`));
+
+        activityDiv.appendChild(messageText);
+        chatBox.appendChild(activityDiv);
+      });
+
+      chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the last message
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    showErrorMessage('An error occurred while fetching messages.');
+  }
+});
+
+
+// Utility function to show error message in UI
+function showErrorMessage(message) {
+  const chatBox = document.getElementById('chat-box');
+  const errorMessage = document.createElement('div');
+  errorMessage.classList.add('error-message');
+  errorMessage.textContent = message;
+  chatBox.appendChild(errorMessage);
+}
+   
+function toggleAddUser() {
+        const container = document.getElementById('add-user-container');
+        container.style.display = container.style.display === 'none' || container.style.display === '' ? 'block' : 'none';
+    }
+
+
+
+function fetchProfileDataAccount() {
+    try {
+        
+        const savedProfileData = sessionStorage.getItem('profileData');
+        if (savedProfileData) {
+        const data = JSON.parse(savedProfileData);
+    
+        if (data.profileImage) {
+            document.getElementById('profileImageAccount').src = data.profileImage;
+        }
+        alert(data.name);
+        document.getElementById('nameAccount').innerHTML = data.name;
+        document.getElementById('emailAccount').textContent = "Email: " + data.email;
+        document.getElementById('bioAccount').textContent = data.bio;
+        document.getElementById('age').textContent = data.age;
+    }
+    } catch (error) {
+        console.error('Error fetching profile data:', error);
+    }
+}
+
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onloadend = function () {
+            document.getElementById('profileImagePreview').src = reader.result;
+            document.getElementById('profileImageBase64').value = reader.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+async function saveProfileData() {
+    const name = document.getElementById('updateName').value;
+    const bio = document.getElementById('updateBio').value;
+    const age = document.getElementById('updateAge').value;
+    const profileImageBase64 = document.getElementById('profileImageBase64').value;
+    const email = sessionStorage.getItem('email');
+    
+    try {
+        const response = await fetch('http://192.168.0.158:3001/api-profile-save', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({email, name, bio, age, profileImage: profileImageBase64 })
+        });
+
+        const data = await response.json();
+        alert(data.message);
+        fetchProfileData(sessionStorage.getItem('email'),false);
+    } catch (error) {
+        console.error('Error saving profile data:', error);
+    }
+}
+
+if (sessionStorage.getItem('location')==='account') {
+    fetchProfileData(sessionStorage.getItem('email'),false);
+    fetchProfileDataAccount();
+}
+
+document.getElementById('editProfileButton').addEventListener('click', () => {
+    document.getElementById('editModal').style.display = 'flex';
+});
+
+document.getElementById('closeModalButton').addEventListener('click', () => {
+    document.getElementById('editModal').style.display = 'none';
+});
+
+document.getElementById('saveChangesButton').addEventListener('click', saveProfileData);
+
+document.getElementById('updateImage').addEventListener('change', handleFileUpload);
+
+
+if (sessionStorage.getItem('location')==='landing') {
+
+// Socket.io bağlantısını başlatıyoruz
+const socket = io('http://192.168.0.158:3002'); // Server'ın adresi
+
+// Kullanıcı adı ve alıcı bilgisi
+let username = sessionStorage.getItem('email') || ''; // Default to empty if not found
+let recipient = sessionStorage.getItem('recipient') || ''; // Default to empty if not found
+
+// Kullanıcı adı girildikten sonra chat'e katıl
+if (username) {
+  socket.emit('join', username);
+} else {
+  console.log("Username is missing. Please log in first.");
+}
+
+// Mesaj gönderme işlemi
+function sendPrivateMessage() {
+  recipient = sessionStorage.getItem('recipient');
+  const messageInput = document.getElementById('message-input');
+  const message = messageInput.value;
+  if (recipient && message) {
+    socket.emit('private message', { toUsername: recipient, message }, (response) => {
+      console.log(response.message); // Mesaj durumu
+    });
+
+    // Gönderilen mesajı ekrana ekle
+    appendMessage(recipient, { from: username, message }, true); // Gönderen kullanıcı
+    messageInput.value = ''; // Mesaj kutusunu temizle
+  }
+}
+
+// Gelen mesajları gösterme
+socket.on('chat message', (messageData) => {
+  appendMessage(messageData.from, messageData, false); // Gelen mesaj
+});
+
+// Mesajları ekrana eklemek
+function appendMessage(chatUser, messageData, isMyMessage) {
+  const chatBox = document.getElementById(`chatbox-${chatUser}`);
+  
+  if (!chatBox) {
+    console.error(`Chatbox bulunamadı: chatbox-${chatUser}`);
+    return;
+  }
+
+  const updatedMessageData = { ...messageData, isRead: true };
+
+  const messageElement = document.createElement('div');
+  messageElement.classList.add(isMyMessage ? 'my-message' : 'other-message');
+
+  const strongElement = document.createElement('strong');
+  strongElement.className = isMyMessage ? 'my-message-name' : 'other-message-name';
+  strongElement.textContent = `${updatedMessageData.from}:`;
+
+  const messageText = document.createElement('p');
+  messageText.appendChild(strongElement);
+  messageText.appendChild(document.createTextNode(` ${updatedMessageData.message}`));
+
+  messageElement.appendChild(messageText);
+  chatBox.appendChild(messageElement);
+  
+  chatBox.scrollTop = chatBox.scrollHeight; // Son mesaja kaydır
+}
+
+
+// Kullanıcı listesine güncelleme yapmak
+/*socket.on('update users', (users) => {
+  const userList = document.querySelector('.user-list');
+  const container = document.getElementById('chat-container');
+  userList.innerHTML = ''; // Listeyi temizle
+
+  users.forEach((user) => {
+    if (user !== username) {
+      // Kullanıcı listesi elemanı oluştur
+      const userItem = document.createElement('div');
+      userItem.classList.add('user');
+      userItem.textContent = user;
+      userItem.onclick = () => selectRecipient(user); // Kullanıcıyı tıklayınca alıcıyı seç
+      userList.appendChild(userItem);
+
+      // Kullanıcıya özel chatbox oluştur
+      if (!document.getElementById(`chatbox-${user}`)) {
+        const userChat = document.createElement('div');
+        userChat.classList.add('chat-box');
+        userChat.id = `chatbox-${user}`;
+        userChat.style.display = 'none'; // Başlangıçta gizli
+        container.prepend(userChat);
+      }
+    }
+  });
+});*/
+
+// Kullanıcıyı seçme
+/*function selectRecipient(user) {
+  recipient = user;
+  sessionStorage.setItem('recipient', user);
+
+  // Tüm chatbox'ları gizle
+  document.querySelectorAll('.chat-box').forEach((chatbox) => {
+    chatbox.style.display = 'none';
+  });
+
+  // Seçilen kullanıcının chatbox'unu göster
+  const selectedChatbox = document.getElementById(`chatbox-${user}`);
+  if (selectedChatbox) {
+    selectedChatbox.style.display = 'flex';
+  }
+}*/
+
+// Kullanıcı ekleme
+/*document.getElementById('addFriendForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const friendUsername = document.getElementById('friend').value;
+  if (friendUsername) {
+    socket.emit('private message', { toUsername: friendUsername, message: 'Hi, let\'s chat!' }, (response) => {
+      console.log(response.message);
+    });
+  }
+});
+*/
+}
+
+
+</script>
+
+</body>
+</html>
