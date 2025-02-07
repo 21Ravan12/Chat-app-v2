@@ -7,28 +7,12 @@
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style id="account">
-.login-page{
-    display: none;
-}
-.sign-up-page{
-    display: none;
-}
-.forget-password-page{
-    display: none;
-}
-.forget-code-insert-page{
-    display: none;
-}
-.code-insert-page{
-    display: none;
-}
-.Landing-page{
-    display: none;
-}
-.main-page{
-    display: none;
-}
+    <link id="account" rel="stylesheet" href="css/acount.css"></link>
+    <link id="landing-page" rel="stylesheet" href="css/landing-page.css"></link>
+    <link id="log-in" rel="stylesheet" href="css/log-in-sign-up.css"></link>
+    <link id="main-page" rel="stylesheet" href="css/main-page.css"></link>
+    <style id="account" >
+        
 * {
     margin: 0;
     padding: 0;
@@ -42,15 +26,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .account-container {
     width: 100%;
-    height: 100%;
-    display: flex;
+    height: 98dvh;
+    display: none;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+.back-button {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    background-color: #1E90FF; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px; /* Set font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.back-button:hover {
+    background-color: #4682B4; /* Darker green on hover */
 }
 
 .profile-wrapper {
@@ -214,43 +216,14 @@ body {
     border-radius: 8px;
 }
 
+
     </style>
-    <style id="landing-page">
-.login-page{
-    display: none;
-}
-.sign-up-page{
-    display: none;
-}
-.forget-password-page{
-    display: none;
-}
-.forget-code-insert-page{
-    display: none;
-}
-.code-insert-page{
-    display: none;
-}
-.account-container{
-    display: none;
-}
-.main-page{
-    display: none;
-}
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1c1c1c;
-    color: #e0e0e0;
-    display: flex;
-    height: 100dvh;
-    flex-direction: column;
-}
+    <style id="landing-page" >
+
 .Landing-page{
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
@@ -457,6 +430,7 @@ header {
     height: 100%;
     justify-content: flex-end; /* Change this from space-between to flex-end */
     flex-grow: 1;
+    height: 92.5dvh;
 }
 
 .chat-box {
@@ -468,7 +442,6 @@ header {
     display: block;
     flex-direction: column; /* Remove column-reverse to fix the message order */
     flex-grow: 1;
-    height: 50dvh;
 }
 
 #message {
@@ -495,21 +468,26 @@ header {
     margin-left: auto;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    max-width: 30ch;
-    min-width: 15ch;
-    padding: 0px 12px;
+    width: fit-content;
+    max-width: 70%;
+    min-width: 18ch;
+    padding: 12px;
     border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
     position: relative;
+    padding-top: 18px; /* İsim için boşluk bırakıldı */
 }
+
 .my-message-name {
-position: absolute;
-left: 1px;
-top: 1px;
-font-size: 10px;
-color: white;
+    position: absolute;
+    left: 8px;
+    top: 3px;
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
 }
+
 
 .other-message {
     background-color: #e3f2fd;
@@ -517,21 +495,24 @@ color: white;
     margin-right: auto;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    max-width: 30ch;
-    min-width: 15ch;
-    padding: 0px 12px;
+    width: fit-content;
+    min-width: 18ch;
+    max-width: 70%;
+    padding: 12px;
     border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
     position: relative;
+    padding-top: 18px; /* İsim için boşluk bırakıldı */
 }
 
 .other-message-name {
-position: absolute;
-left: 1px;
-top: 1px;
-font-size: 10px;
-color: black;
+    position: absolute;
+    left: 8px;
+    top: 3px;
+    font-size: 10px;
+    color: black;
+    font-weight: bold;
 }
 
 .input-container {
@@ -589,25 +570,12 @@ color: black;
     </style>
     <style id="log-in" >
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #e0e0e0; /* Light grey text */
-}
-.main-page{
-    display: none;
-}
+
 
 .login-page{
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -639,12 +607,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-.account-container{
-    display: none;
-}
-.Landing-page{
-    display: none;
-}
+
 /* Main container with dark theme styling */
 .registration-container {
     background-color: #1f1f1f; /* Dark container background */
@@ -743,103 +706,143 @@ body {
 
     </style>
     <style id="main-page" >
-.login-page{
-    display: none;
-}
-.sign-up-page{
-    display: none;
-}
-.forget-password-page{
-    display: none;
-}
-.forget-code-insert-page{
-    display: none;
-}
-.code-insert-page{
-    display: none;
-}
-    .account-container{
-        display: none;
-    }
-    .Landing-page{
-        display: none;
-    }
-    
-    
-   /* Genel Stiller */
+/* Genel Stiller */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #1b1b1b;
-    color: #ddd;
-    line-height: 1.6;
+    background-color: #181818;
+    color: white;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-h1, h2, h3 {
-    font-weight: 600;
+/* Ana Sayfa */
+.main-page {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
 }
 
 /* Navbar */
+/* Navbar */
 .main-navbar {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background-color: #333;
-    color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px 5%;
+    background: rgba(34, 34, 34, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
 }
 
+/* Navbar Scroll Efekti */
+.main-navbar.scrolled {
+    background: rgba(20, 20, 20, 0.95);
+    padding: 10px 5%;
+}
+
+/* Logo */
 .platform-logo h1 {
-    font-size: 2em;
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #00bcd4;
+    transition: color 0.3s ease-in-out;
+}
+
+.platform-logo h1:hover {
+    color: #00eaff;
+}
+
+/* Navigation Links */
+.navigation-links {
+    display: flex;
+    gap: 25px;
 }
 
 .navigation-links a {
-    margin: 0 15px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #ddd;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 10px 15px;
+    border-radius: 6px;
 }
 
 .navigation-links a:hover {
-    color: #00bcd4;
+    color: #00eaff;
+    background: rgba(0, 188, 212, 0.2);
 }
 
+/* Login Button */
 .login-button {
-    background-color: #00bcd4;
+    background: linear-gradient(135deg, #00bcd4, #008c9e);
     padding: 12px 25px;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
 }
 
 .login-button:hover {
-    background-color: #008c9e;
+    background: linear-gradient(135deg, #008c9e, #005f6b);
+    transform: scale(1.05);
 }
 
-/* Hero Bölümü */
-.hero-banner {
+/* Mobil Menü */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle div {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Mobil Menü Açıkken */
+.navigation-links.open {
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    background: rgba(34, 34, 34, 0.95);
+    width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s ease-in-out;
+}
+/* Hero Banner */
+.hero-banner {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 100px 40px;
-    background-color: #212121;
-}
-
-.hero-image-container img {
-    max-width: 400px;
+    text-align: left;
+    padding: 100px 5%;
+    margin-top: 80px;
+    background: radial-gradient(circle, #212121, #1b1b1b);
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero-content {
@@ -847,78 +850,90 @@ h1, h2, h3 {
 }
 
 .hero-content h2 {
-    font-size: 3em;
+    font-size: 2.8em;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .hero-content p {
     font-size: 1.2em;
-    margin: 20px 0;
-    color: #ccc;
+    color: #bbb;
+    margin-bottom: 20px;
 }
 
 .primary-cta-button {
     display: inline-block;
-    background-color: #00bcd4;
+    background: #00bcd4;
     padding: 12px 30px;
-    color: white;
     font-size: 1.1em;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    transition: background 0.3s;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
 }
 
 .primary-cta-button:hover {
-    background-color: #008c9e;
+    background: #008c9e;
+}
+
+.hero-image-container img {
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Hakkında Bölümü */
 .about-platform {
-    padding: 60px 40px;
+    width: 90%;
+    max-width: 800px;
     text-align: center;
-    background-color: #2c2c2c;
+    padding: 60px 20px;
+    background: #282828;
+    border-radius: 10px;
 }
 
 .about-platform h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #fff;
+    font-size: 2.2em;
+    margin-bottom: 15px;
 }
 
 .about-platform p {
     font-size: 1.2em;
-    color: #aaa;
-    max-width: 800px;
-    margin: 0 auto;
+    color: #ccc;
 }
 
 /* Özellikler Bölümü */
 .platform-features {
-    display: flex;
-    flex-direction: column;
-    padding: 80px 40px;
-    background-color: #333;
+    width: 90%;
+    max-width: 1100px;
     text-align: center;
-}
-
-.platform-features h2 {
-    margin-bottom: 40px;
-    font-size: 2.5em;
-    color: #fff;
+    padding: 80px 20px;
+    background: #333;
+    border-radius: 10px;
 }
 
 .feature-list {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .feature-item {
-    width: 30%;
-    background-color: #444;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 320px;
+    background: #444;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    background: #505050;
 }
 
 .feature-item h3 {
@@ -932,31 +947,91 @@ h1, h2, h3 {
     color: #ccc;
 }
 
-/* Kayıt Bölümü */
+/* Kayıt Ol CTA */
 .signup-call-to-action {
+    width: 90%;
+    max-width: 700px;
     text-align: center;
-    padding: 80px 40px;
-    background-color: #00bcd4;
-    color: white;
+    padding: 50px 20px;
+    background: #2c2c2c;
+    border-radius: 10px;
 }
 
 .signup-call-to-action h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 2em;
+    margin-bottom: 10px;
 }
 
 .signup-call-to-action p {
     font-size: 1.2em;
-    margin-bottom: 40px;
+    color: #bbb;
+    margin-bottom: 20px;
 }
 
 /* Footer */
 .main-footer {
+    width: 100%;
     text-align: center;
     padding: 20px;
-    background-color: #111;
+    background: #111;
     color: white;
-    font-size: 1em;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+/* Mobil Uyumluluk */
+@media screen and (max-width: 1024px) {
+    .navigation-links {
+        display: none;
+    }
+
+    .hero-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-image-container img {
+        max-width: 300px;
+    }
+
+    .feature-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-item {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .platform-logo h1 {
+        font-size: 1.5em;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .primary-cta-button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    .about-platform p,
+    .feature-item p,
+    .signup-call-to-action p {
+        font-size: 1em;
+    }
 }
 
     </style>
@@ -972,7 +1047,7 @@ h1, h2, h3 {
                 <a href="#about-section">Hakkında</a>
                 <a href="#features-section">Özellikler</a>
                 <a href="#signup-section">Kaydol</a>
-                <a onclick="MainToLogin()" class="login-button">Giriş Yap</a>
+                <a onclick="navigateTo('login-page')" class="login-button">Giriş Yap</a>
             </nav>
         </header>
     
@@ -981,9 +1056,6 @@ h1, h2, h3 {
                 <h2>Hayatını Paylaş, Dünyayı Keşfet</h2>
                 <p>Yeni arkadaşlar edinin, içerik paylaşın ve dünya çapında etkileşimde bulunun. Anında bağlantı kurun!</p>
                 <a href="#signup-section" class="primary-cta-button">Kaydol ve Başla</a>
-            </div>
-            <div class="hero-image-container">
-                <img src="hero-image.jpg" alt="Sosyal Platform Tanıtım Görseli">
             </div>
         </section>
     
@@ -1013,7 +1085,7 @@ h1, h2, h3 {
         <section id="signup-section" class="signup-call-to-action">
             <h2>Hemen Kaydolun!</h2>
             <p>Hızlıca bir hesap oluşturun ve içerik paylaşmaya başlayın!</p>
-            <a onclick="MainToSignUp()" class="primary-cta-button">Kaydol</a>
+            <a onclick="navigateTo('sign-up-page')" class="primary-cta-button">Kaydol</a>
         </section>
     
         <footer class="main-footer">
@@ -1030,8 +1102,8 @@ h1, h2, h3 {
                 <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
                 <input type="password" id="password" name="password" class="input-field" placeholder="Password" required><br>
                 <button type="submit" class="submit-button">Log in</button>
-                <a onclick="LoginToForgetpassword()" class="form-link secret-section">Forget your password?</a>
-                <a onclick="LoginToSignin()" class="form-link">Or, sign up</a>
+                <a onclick="navigateTo('forget-password-page')" class="form-link secret-section">Forget your password?</a>
+                <a onclick="navigateTo('sign-up-page')" class="form-link">Or, sign up</a>
             </form>
         </div>
     </div>
@@ -1049,8 +1121,7 @@ h1, h2, h3 {
                 <input type="text" id="bio" name="bio" class="input-field" placeholder="Bio" required><br>
                 <input type="number" id="birthyear" name="birthyear" class="input-field" placeholder="Birth Year" required><br>
                 <button type="submit" class="submit-button">Sign up</button>
-                <a href="forget_password.html" class="form-link secret-section">Forget your password?</a>
-                <a onclick="SigninToLogin()" class="form-link">Or, log in</a>
+                <a onclick="navigateTo('login-page')" class="form-link">Or, log in</a>
             </form>
         </div>
     </div>
@@ -1064,7 +1135,7 @@ h1, h2, h3 {
             <form id="forget-password-form">
                 <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
                 <button type="submit" class="submit-button">Send code</button>
-                <a onclick="ForgetpasswordToLogin()" class="form-link">Or, Log in</a>
+                <a onclick="navigateTo('login-page')" class="form-link">Or, Log in</a>
             </form>
         </div>
     </div>
@@ -1103,7 +1174,7 @@ h1, h2, h3 {
             <h1>Social Feed</h1>
         </div>
         <div class="profile-btn">
-            <img src="https://via.placeholder.com/40" alt="Profile Picture" id="profileImage" onclick="LandingToAccount()">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture" id="profileImage" onclick="navigateTo('account-container')">
         </div>
         <button class="settings-btn">
             <i class="fas fa-cog"></i> <!-- Single gear/cog icon -->
@@ -1147,6 +1218,7 @@ h1, h2, h3 {
 </div>
 
 <div class="account-container">
+    <button class="back-button" onclick="navigateTo('Landing-page')">Geri</button>
     <div class="profile-wrapper">
         <div class="profile-card">
             <div class="profile-header">
@@ -1195,294 +1267,238 @@ h1, h2, h3 {
 </div>
 
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const pages = ["main-page", "login-page", "sign-up-page", "forget-password-page", "forget-code-insert-page", "code-insert-page", "Landing-page","account-container"];
+    
+    function navigateTo(page) {
+        sessionStorage.setItem('location',page);
+        if (sessionStorage.getItem('location')==='Landing-page') {
+            fetchProfileData(sessionStorage.getItem('email'));
+            fetchFriendsData(sessionStorage.getItem('email'),true);
+            document.querySelector('.user-list').addEventListener('click', handleUserClick);
+            document.getElementById("addFriendForm").addEventListener("submit", addFriend);
+            username = sessionStorage.getItem('email') || ''; 
+            recipient = sessionStorage.getItem('recipient') || ''; 
+            joinChat();
+        }else if (sessionStorage.getItem('location')==='account-container') {   
+            fetchProfileDataAccount();
+            document.getElementById('editProfileButton').addEventListener('click', () => {
+            document.getElementById('editModal').style.display = 'flex';
+            });
+            document.getElementById('closeModalButton').addEventListener('click', () => {
+            document.getElementById('editModal').style.display = 'none';
+            });
+            document.getElementById('saveChangesButton').addEventListener('click', saveProfileData);
+            document.getElementById('updateImage').addEventListener('change', handleFileUpload);
+        
+        }
+        pages.forEach(p => {
+            document.querySelector(`.${p}`).style.display = (p === page) ? "flex" : "none";
+        });
+    }
+
+    // Sayfa başlangıcında ana sayfa görünsün
+    if (sessionStorage.getItem('location')) {
+        navigateTo(sessionStorage.getItem('location'));
+    }else {
+        navigateTo("main-page");
+    }
+
+
+    
+    // HTML içinde onclick kullanıyorsan, bunları global yap
+    window.navigateTo = navigateTo;
+});
+
+</script>
 
 <script>
-    document.getElementById('log-in').disabled=true;
-    document.getElementById('landing-page').disabled=true;
-    document.getElementById('account').disabled=true;
-    
-    function MainToLogin(){
-        sessionStorage.setItem('location','login');
-        document.getElementById('main-page').disabled=true; 
-        document.getElementById('log-in').disabled=false;
-    }
-    
-    function MainToSignUp(){
-        sessionStorage.setItem('location','signin');
-        document.getElementById('main-page').disabled=true; 
-        document.getElementById('log-in').disabled=false;
-        document.querySelector('.login-page').style.display='none';
-        document.querySelector('.sign-up-page').style.display='flex';
-    }
-    
-    function LoginToSignin(){
-        sessionStorage.setItem('location','signin');
-        document.querySelector('.login-page').style.display='none';
-        document.querySelector('.sign-up-page').style.display='flex';
-    }
-    
-    function SigninToLogin(){
-        sessionStorage.setItem('location','login');
-        document.querySelector('.login-page').style.display='flex';
-        document.querySelector('.sign-up-page').style.display='none';
-    }
-    
-    function LoginToForgetpassword(){
-        document.querySelector('.login-page').style.display='none';
-        document.querySelector('.forget-password-page').style.display='flex';
-    }
-    
-    function ForgetpasswordToLogin(){
-        document.querySelector('.login-page').style.display='flex';
-        document.querySelector('.forget-password-page').style.display='none';
-    }
-    
-    function ToForgetCode(){
-        document.querySelector('.forget-password-page').style.display='none';
-        document.querySelector('.forget-code-insert-page').style.display='flex';
-    }
-    
-    function ToEnterCode(){
-        document.querySelector('.sign-up-page').style.display='none';
-        document.querySelector('.code-insert-page').style.display='flex';
-    }
-    
-    function ToLandingPage(){
-        sessionStorage.setItem('location','landing');
-        document.querySelector('.login-page').style.display='none';
-        document.querySelector('.forget-code-insert-page').style.display='none';
-        document.querySelector('.code-insert-page').style.display='none';
-        document.getElementById('log-in').disabled=true;
-        alert(sessionStorage.getItem('email'));
-        fetchProfileData(sessionStorage.getItem('email'));
-        fetchFriendsData(sessionStorage.getItem('email'),true);
-        document.getElementById('landing-page').disabled=false;
-        setTimeout(function() {
-        window.location.reload();  // This will reload the page
-        }, 100); 
-    }
-    
-    function AccountToLanding(){
-        sessionStorage.setItem('location','landing');
-        document.getElementById('landing-page').disabled=true;
-        document.getElementById('account').disabled=false;
-    }
-    
-    function LandingToAccount(){
-        sessionStorage.setItem('location','account');
-        document.getElementById('landing-page').disabled=true;
-        document.getElementById('account').disabled=false;
-        fetchProfileDataAccount();
-    }
-    
-    try {
-    let location=sessionStorage.getItem('location');
-    if (location==='login') {
-        document.getElementById('log-in').disabled=false;
-        document.getElementById('main-page').disabled=true; 
-    }else if(location==='signin'){
-        document.getElementById('log-in').disabled=false;
-        document.getElementById('main-page').disabled=true; 
-        document.querySelector('.login-page').style.display='none';
-        document.querySelector('.sign-up-page').style.display='flex';
-    }else if(location==='landing'){
-        document.getElementById('main-page').disabled=true; 
-        document.getElementById('landing-page').disabled=false;
-        fetchProfileData(sessionStorage.getItem('email'));
-    }else if(location==='account'){
-        document.getElementById('main-page').disabled=true; 
-        document.getElementById('account').disabled=false;
-    }       
-    }catch{}
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault();
 
+    const formData = new FormData(event.target);
+    sessionStorage.setItem('email',formData.get('email'));
+    const data = {
+        email: formData.get('email'),
+        password: formData.get('password')
+    };
 
+    fetch("http://192.168.0.158:3001/api-login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        
+        if (data.message == "Login successful!") {
+            navigateTo("Landing-page");
+        }else{
+            document.querySelector('.error').textContent = data.message;
+            document.querySelector('.error').style.display = "block";
+            document.querySelector('.secret').style.display = "block";
+        }
+        
 
-    function toggleLeftContainer() {
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred: " + error);
+    });
+});
+
+document.getElementById("forget-password-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    sessionStorage.setItem('email',formData.get('email'));
+    const data = {
+        email: formData.get('email')
+    };
+
+    fetch("http://192.168.0.158:3001/api-forget", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        
+        if (data.message == "Password recovery code sent successfully!") {
+            navigateTo("forget-code-insert-page");
+        }else{
+            document.querySelector('.error').textContent = data.message;
+            document.querySelector('.error').style.display = "block";
+           
+        }
+        
+
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred: " + error);
+    });
+});
+
+document.getElementById("forget-code-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = {
+        code: formData.get('code'),
+    };
+
+    fetch("http://192.168.0.158:3001/api-forget-end", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+       
+        if (data.message == "Code successfully verified!") {
+            navigateTo("Landing-page");
+        }else{
+            document.querySelector('.error').textContent = data.message;
+            document.querySelector('.error').style.display = "block";
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Error!");
+    });
+});
+
+document.getElementById("sign-up-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    document.querySelector('.succes').style.color = "green";
+    document.querySelector('.succes').textContent = 'Wait a minut....';
+    document.querySelector('.succes').style.display = "block";
+
+    const formData = new FormData(event.target);
+    sessionStorage.setItem('email',formData.get('email'));
+    const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        password: formData.get('password'),
+        bio: formData.get('bio'),
+        birthyear: formData.get('birthyear')
+    };
+
+    fetch("http://192.168.0.158:3001/api-enter", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message == "Verification code sent successfully!") {
+            navigateTo("code-insert-page");
+        }
+        document.querySelector('.succes').textContent = data.error;
+        document.querySelector('.succes').style.color = "red";
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Error!");
+    });
+});
+
+document.getElementById("enter-code-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = {
+        code: formData.get('code'),
+    };
+
+    fetch("http://192.168.0.158:3001/api-enter-end", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+       
+        if (data.message == "User successfully signed up!") {
+            navigateTo("Landing-page");
+        }else{
+            document.querySelector('.error').textContent = data.message;
+            document.querySelector('.error').style.display = "block";
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Error!");
+    });
+});
+
+</script>
+
+<script>
+    
+function toggleLeftContainer() {
     const button = document.querySelector('.toggle-btn');
     button.classList.toggle('rotated');
     const leftContainer = document.querySelector(".left-container");
     leftContainer.classList.toggle("open"); // Açma/Kapama
     if (leftContainer.classList.contains('open')) {
-        button.style.left = "330px"; // Açılınca içeride kalacak
+        button.style.left = "325px"; // Açılınca içeride kalacak
     } else {
         button.style.left = "0px"; // Kapanınca dışarı çıkacak
     }
 }
-
-
-
-    document.getElementById("login-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            sessionStorage.setItem('email',formData.get('email'));
-            const data = {
-                email: formData.get('email'),
-                password: formData.get('password')
-            };
-
-            fetch("http://192.168.0.158:3001/api-login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                
-                if (data.message == "Login successful!") {
-
-                    ToLandingPage();
-                }else{
-                    document.querySelector('.error').textContent = data.message;
-                    document.querySelector('.error').style.display = "block";
-                    document.querySelector('.secret').style.display = "block";
-                }
-                
-
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("An error occurred: " + error);
-            });
-        });
-
-    document.getElementById("forget-password-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            sessionStorage.setItem('email',formData.get('email'));
-            const data = {
-                email: formData.get('email')
-            };
-
-            fetch("http://192.168.0.158:3001/api-forget", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                
-                if (data.message == "Password recovery code sent successfully!") {
-                    ToForgetCode();
-                }else{
-                    document.querySelector('.error').textContent = data.message;
-                    document.querySelector('.error').style.display = "block";
-                   
-                }
-                
-
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("An error occurred: " + error);
-            });
-        });
-
-    document.getElementById("forget-code-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            const data = {
-                code: formData.get('code'),
-            };
-
-            fetch("http://192.168.0.158:3001/api-forget-end", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-               
-                if (data.message == "Code successfully verified!") {
-                    ToLandingPage();
-                }else{
-                    document.querySelector('.error').textContent = data.message;
-                    document.querySelector('.error').style.display = "block";
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Error!");
-            });
-        });
-
-    document.getElementById("sign-up-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            document.querySelector('.succes').style.color = "green";
-            document.querySelector('.succes').textContent = 'Wait a minut....';
-            document.querySelector('.succes').style.display = "block";
-
-            const formData = new FormData(event.target);
-            sessionStorage.setItem('email',formData.get('email'));
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                password: formData.get('password'),
-                bio: formData.get('bio'),
-                birthyear: formData.get('birthyear')
-            };
-
-            fetch("http://192.168.0.158:3001/api-enter", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message == "Verification code sent successfully!") {
-                    ToEnterCode();
-                }
-                document.querySelector('.succes').textContent = data.error;
-                document.querySelector('.succes').style.color = "red";
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Error!");
-            });
-        });
-
-    document.getElementById("enter-code-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            const data = {
-                code: formData.get('code'),
-            };
-
-            fetch("http://192.168.0.158:3001/api-enter-end", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-               
-                if (data.message == "User successfully signed up!") {
-                    ToLandingPage();
-                }else{
-                    document.querySelector('.error').textContent = data.message;
-                    document.querySelector('.error').style.display = "block";
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Error!");
-            });
-        });
-
-
 
 
 async function fetchProfileData(email,Allow=true) {
@@ -1535,14 +1551,6 @@ function updateProfileUI(data) {
     // Update the username if it exists
     
 }
-
-window.addEventListener('load', () => {
-    const savedProfileData = sessionStorage.getItem('profileData');
-    if (savedProfileData) {
-        const data = JSON.parse(savedProfileData);
-        updateProfileUI(data);
-    }
-});
 
 
 async function fetchFriendsData(email,Allow) {
@@ -1623,133 +1631,123 @@ function updateFriends(data) {
         console.error('No friends data found.');
     }
 }
-
-
-window.addEventListener('load', () => {
-    const savedFriendsData = sessionStorage.getItem('friendsData');
-    if (savedFriendsData) {
-        const data = JSON.parse(savedFriendsData);
-        updateFriends(data);
-    }
-});
  
-    // Handle the user addition form
-document.getElementById("addFriendForm").addEventListener("submit", function(event) {
-        event.preventDefault();
 
-        const formData = new FormData(event.target);
-        const data = {
-            friendEmail: formData.get('friend'),
-            email: sessionStorage.getItem('email'),
-        };
+function addFriend(event) {
+    event.preventDefault();
 
-        fetch("http://192.168.0.158:3001/api-friend-add", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === "Friend added successfully!") {
-                fetchFriendsData(sessionStorage.getItem('email'),false);
-          
-            } else {
-                alert("Failed to add friend");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("An error occurred: " + error.message);
-        });
+    const formData = new FormData(event.target);
+    const data = {
+        friendEmail: formData.get('friend'),
+        email: sessionStorage.getItem('email'),
+    };
+
+    fetch("http://192.168.0.158:3001/api-friend-add", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Friend added successfully!") {
+            fetchFriendsData(sessionStorage.getItem('email'), false);
+        } else {
+            alert("Failed to add friend");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred: " + error.message);
+    });
+}
+
+async function handleUserClick(event) {
+    document.querySelectorAll('.chat-box').forEach((chatbox) => {
+      chatbox.style.display = 'none';
     });
 
-document.querySelector('.user-list').addEventListener('click', async (event) => {
-  document.querySelectorAll('.chat-box').forEach((chatbox) => {
-    chatbox.style.display = 'none';
-  });
+    console.log('Clicked element:', event.target);
 
-  console.log('Clicked element:', event.target);
+    if (!event.target.classList.contains('friend-selected')) return;
 
-  if (!event.target.classList.contains('friend-selected')) return;
+    const toEmail = event.target.getAttribute('email').trim(); // Get email from attribute
+    const fromEmail = sessionStorage.getItem('email'); // Get sender email from sessionStorage
 
-  const toEmail = event.target.getAttribute('email').trim(); // Get email from the data-email attribute
-  const fromEmail = sessionStorage.getItem('email'); // Store email in sessionStorage
 
-  if (!fromEmail) {
-    console.error('Gönderen kullanıcı bulunamadı.');
-    return;
-  }
-
-  sessionStorage.setItem('recipient', toEmail);
-
-  const container = document.getElementById('chat-container');
-  if (!container) {
-    console.error('Chat container bulunamadı.');
-    return;
-  }
-
-  let chatBox = document.getElementById(`chatbox-${toEmail}`);
-  if (!chatBox) {
-    chatBox = document.createElement('div');
-    chatBox.classList.add('chat-box');
-    chatBox.id = `chatbox-${toEmail}`;
-    container.prepend(chatBox);
-  }
-
-  chatBox.style.display = 'flex';
-  chatBox.innerHTML = ''; // Clear previous content
-
-  const loadingMessage = document.createElement('div');
-  loadingMessage.textContent = 'Loading messages...';
-  chatBox.appendChild(loadingMessage);
-
-  try {
-    const response = await fetch('http://192.168.0.158:3001/api-chat-get', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sender: fromEmail, receiver: toEmail }), // Use emails here
-    });
-
-    if (!response.ok) {
-      throw new Error(`Server error: ${response.status}`);
+    if (!fromEmail) {
+      console.error('Gönderen kullanıcı bulunamadı.');
+      return;
     }
 
-    const result = await response.json();
-    console.log('Server response:', result);
+    sessionStorage.setItem('recipient', toEmail);
 
-    chatBox.innerHTML = ''; // Clear loading message
+    const container = document.getElementById('chat-container');
+    if (!container) {
+      console.error('Chat container bulunamadı.');
+      return;
+    }
 
-    if (result.length === 0) {
-      const noMessagesDiv = document.createElement('div');
-      noMessagesDiv.textContent = 'No messages yet.';
-      chatBox.appendChild(noMessagesDiv);
-    } else {
-      result.forEach((message) => {
-        const activityDiv = document.createElement('div');
-        activityDiv.classList.add(message.from === fromEmail ? 'my-message' : 'other-message');
+    let chatBox = document.getElementById(`chatbox-${toEmail}`);
+    if (!chatBox) {
+      chatBox = document.createElement('div');
+      chatBox.classList.add('chat-box');
+      chatBox.id = `chatbox-${toEmail}`;
+      container.prepend(chatBox);
+    }
 
-        const strongElement = document.createElement('strong');
-        strongElement.className = message.from === fromEmail ? 'my-message-name' : 'other-message-name';
-        strongElement.textContent = `${message.from}:`;
+    chatBox.style.display = 'flex';
+    chatBox.innerHTML = ''; // Clear previous content
 
-        const messageText = document.createElement('p');
-        messageText.appendChild(strongElement);
-        messageText.appendChild(document.createTextNode(` ${message.message}`));
+    const loadingMessage = document.createElement('div');
+    loadingMessage.textContent = 'Loading messages...';
+    chatBox.appendChild(loadingMessage);
 
-        activityDiv.appendChild(messageText);
-        chatBox.appendChild(activityDiv);
+    try {
+      const response = await fetch('http://192.168.0.158:3001/api-chat-get', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sender: fromEmail, receiver: toEmail }),
       });
 
-      chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the last message
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    showErrorMessage('An error occurred while fetching messages.');
-  }
-});
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
 
+      const result = await response.json();
+      console.log('Server response:', result);
+
+      chatBox.innerHTML = ''; // Clear loading message
+
+      if (result.length === 0) {
+        const noMessagesDiv = document.createElement('div');
+        noMessagesDiv.textContent = 'No messages yet.';
+        chatBox.appendChild(noMessagesDiv);
+      } else {
+        result.forEach((message) => {
+          const activityDiv = document.createElement('div');
+          activityDiv.classList.add(message.from === fromEmail ? 'my-message' : 'other-message');
+
+          const strongElement = document.createElement('strong');
+          strongElement.className = message.from === fromEmail ? 'my-message-name' : 'other-message-name';
+          strongElement.textContent = `${message.from}:`;
+
+          const messageText = document.createElement('p');
+          messageText.appendChild(strongElement);
+          messageText.appendChild(document.createTextNode(` ${message.message}`));
+
+          activityDiv.appendChild(messageText);
+          chatBox.appendChild(activityDiv);
+        });
+
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the last message
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showErrorMessage('An error occurred while fetching messages.');
+    }
+  }
 
 // Utility function to show error message in UI
 function showErrorMessage(message) {
@@ -1763,8 +1761,7 @@ function showErrorMessage(message) {
 function toggleAddUser() {
         const container = document.getElementById('add-user-container');
         container.style.display = container.style.display === 'none' || container.style.display === '' ? 'block' : 'none';
-    }
-
+}
 
 
 function fetchProfileDataAccount() {
@@ -1777,7 +1774,6 @@ function fetchProfileDataAccount() {
         if (data.profileImage) {
             document.getElementById('profileImageAccount').src = data.profileImage;
         }
-        alert(data.name);
         document.getElementById('nameAccount').innerHTML = data.name;
         document.getElementById('emailAccount').textContent = "Email: " + data.email;
         document.getElementById('bioAccount').textContent = data.bio;
@@ -1826,148 +1822,74 @@ async function saveProfileData() {
     }
 }
 
-if (sessionStorage.getItem('location')==='account') {
-    fetchProfileData(sessionStorage.getItem('email'),false);
-    fetchProfileDataAccount();
-}
+</script>
 
-document.getElementById('editProfileButton').addEventListener('click', () => {
-    document.getElementById('editModal').style.display = 'flex';
-});
-
-document.getElementById('closeModalButton').addEventListener('click', () => {
-    document.getElementById('editModal').style.display = 'none';
-});
-
-document.getElementById('saveChangesButton').addEventListener('click', saveProfileData);
-
-document.getElementById('updateImage').addEventListener('change', handleFileUpload);
-
-
-if (sessionStorage.getItem('location')==='landing') {
-
-// Socket.io bağlantısını başlatıyoruz
-const socket = io('http://192.168.0.158:3002'); // Server'ın adresi
-
-// Kullanıcı adı ve alıcı bilgisi
-let username = sessionStorage.getItem('email') || ''; // Default to empty if not found
-let recipient = sessionStorage.getItem('recipient') || ''; // Default to empty if not found
-
-// Kullanıcı adı girildikten sonra chat'e katıl
-if (username) {
-  socket.emit('join', username);
-} else {
-  console.log("Username is missing. Please log in first.");
-}
-
-// Mesaj gönderme işlemi
-function sendPrivateMessage() {
-  recipient = sessionStorage.getItem('recipient');
-  const messageInput = document.getElementById('message-input');
-  const message = messageInput.value;
-  if (recipient && message) {
-    socket.emit('private message', { toUsername: recipient, message }, (response) => {
-      console.log(response.message); // Mesaj durumu
-    });
-
-    // Gönderilen mesajı ekrana ekle
-    appendMessage(recipient, { from: username, message }, true); // Gönderen kullanıcı
-    messageInput.value = ''; // Mesaj kutusunu temizle
-  }
-}
-
-// Gelen mesajları gösterme
-socket.on('chat message', (messageData) => {
-  appendMessage(messageData.from, messageData, false); // Gelen mesaj
-});
-
-// Mesajları ekrana eklemek
-function appendMessage(chatUser, messageData, isMyMessage) {
-  const chatBox = document.getElementById(`chatbox-${chatUser}`);
-  
-  if (!chatBox) {
-    console.error(`Chatbox bulunamadı: chatbox-${chatUser}`);
-    return;
-  }
-
-  const updatedMessageData = { ...messageData, isRead: true };
-
-  const messageElement = document.createElement('div');
-  messageElement.classList.add(isMyMessage ? 'my-message' : 'other-message');
-
-  const strongElement = document.createElement('strong');
-  strongElement.className = isMyMessage ? 'my-message-name' : 'other-message-name';
-  strongElement.textContent = `${updatedMessageData.from}:`;
-
-  const messageText = document.createElement('p');
-  messageText.appendChild(strongElement);
-  messageText.appendChild(document.createTextNode(` ${updatedMessageData.message}`));
-
-  messageElement.appendChild(messageText);
-  chatBox.appendChild(messageElement);
-  
-  chatBox.scrollTop = chatBox.scrollHeight; // Son mesaja kaydır
-}
-
-
-// Kullanıcı listesine güncelleme yapmak
-/*socket.on('update users', (users) => {
-  const userList = document.querySelector('.user-list');
-  const container = document.getElementById('chat-container');
-  userList.innerHTML = ''; // Listeyi temizle
-
-  users.forEach((user) => {
-    if (user !== username) {
-      // Kullanıcı listesi elemanı oluştur
-      const userItem = document.createElement('div');
-      userItem.classList.add('user');
-      userItem.textContent = user;
-      userItem.onclick = () => selectRecipient(user); // Kullanıcıyı tıklayınca alıcıyı seç
-      userList.appendChild(userItem);
-
-      // Kullanıcıya özel chatbox oluştur
-      if (!document.getElementById(`chatbox-${user}`)) {
-        const userChat = document.createElement('div');
-        userChat.classList.add('chat-box');
-        userChat.id = `chatbox-${user}`;
-        userChat.style.display = 'none'; // Başlangıçta gizli
-        container.prepend(userChat);
+<script>
+        // Socket.io bağlantısını başlatıyoruz
+        const socket = io('http://192.168.0.158:3002'); // Server'ın adresi
+    
+    // Kullanıcı adı ve alıcı bilgisi
+    let username;
+    let recipient;
+    
+    // Kullanıcı adı girildikten sonra chat'e katıl
+    function joinChat(){
+    if (username) {
+      socket.emit('join', username);
+    } else {
+      console.log("Username is missing. Please log in first.");
+    }
+    }
+    
+    // Mesaj gönderme işlemi
+    function sendPrivateMessage() {
+      recipient = sessionStorage.getItem('recipient');
+      const messageInput = document.getElementById('message-input');
+      const message = messageInput.value;
+      if (recipient && message) {
+        socket.emit('private message', { toUsername: recipient, message }, (response) => {
+          console.log(response.message); // Mesaj durumu
+        });
+    
+        // Gönderilen mesajı ekrana ekle
+        appendMessage(recipient, { from: username, message }, true); // Gönderen kullanıcı
+        messageInput.value = ''; // Mesaj kutusunu temizle
       }
     }
-  });
-});*/
-
-// Kullanıcıyı seçme
-/*function selectRecipient(user) {
-  recipient = user;
-  sessionStorage.setItem('recipient', user);
-
-  // Tüm chatbox'ları gizle
-  document.querySelectorAll('.chat-box').forEach((chatbox) => {
-    chatbox.style.display = 'none';
-  });
-
-  // Seçilen kullanıcının chatbox'unu göster
-  const selectedChatbox = document.getElementById(`chatbox-${user}`);
-  if (selectedChatbox) {
-    selectedChatbox.style.display = 'flex';
-  }
-}*/
-
-// Kullanıcı ekleme
-/*document.getElementById('addFriendForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-  const friendUsername = document.getElementById('friend').value;
-  if (friendUsername) {
-    socket.emit('private message', { toUsername: friendUsername, message: 'Hi, let\'s chat!' }, (response) => {
-      console.log(response.message);
+    
+    // Gelen mesajları gösterme
+    socket.on('chat message', (messageData) => {
+      appendMessage(messageData.from, messageData, false); // Gelen mesaj
     });
-  }
-});
-*/
-}
-
-
+    
+    // Mesajları ekrana eklemek
+    function appendMessage(chatUser, messageData, isMyMessage) {
+      const chatBox = document.getElementById(`chatbox-${chatUser}`);
+      
+      if (!chatBox) {
+        console.error(`Chatbox bulunamadı: chatbox-${chatUser}`);
+        return;
+      }
+    
+      const updatedMessageData = { ...messageData, isRead: true };
+    
+      const messageElement = document.createElement('div');
+      messageElement.classList.add(isMyMessage ? 'my-message' : 'other-message');
+    
+      const strongElement = document.createElement('strong');
+      strongElement.className = isMyMessage ? 'my-message-name' : 'other-message-name';
+      strongElement.textContent = `${updatedMessageData.from}:`;
+    
+      const messageText = document.createElement('p');
+      messageText.appendChild(strongElement);
+      messageText.appendChild(document.createTextNode(` ${updatedMessageData.message}`));
+    
+      messageElement.appendChild(messageText);
+      chatBox.appendChild(messageElement);
+      
+      chatBox.scrollTop = chatBox.scrollHeight; // Son mesaja kaydır
+    }
+    
 </script>
 
 </body>
