@@ -23,7 +23,7 @@
                 <a href="#about-section">Hakkında</a>
                 <a href="#features-section">Özellikler</a>
                 <a href="#signup-section">Kaydol</a>
-                <a onclick="MainToLogin()" class="login-button">Giriş Yap</a>
+                <a onclick="navigateTo('login-page')" class="login-button">Giriş Yap</a>
             </nav>
         </header>
     
@@ -61,7 +61,7 @@
         <section id="signup-section" class="signup-call-to-action">
             <h2>Hemen Kaydolun!</h2>
             <p>Hızlıca bir hesap oluşturun ve içerik paylaşmaya başlayın!</p>
-            <a onclick="MainToSignUp()" class="primary-cta-button">Kaydol</a>
+            <a onclick="navigateTo('sign-up-page')" class="primary-cta-button">Kaydol</a>
         </section>
     
         <footer class="main-footer">
@@ -78,8 +78,8 @@
                 <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
                 <input type="password" id="password" name="password" class="input-field" placeholder="Password" required><br>
                 <button type="submit" class="submit-button">Log in</button>
-                <a onclick="LoginToForgetpassword()" class="form-link secret-section">Forget your password?</a>
-                <a onclick="LoginToSignin()" class="form-link">Or, sign up</a>
+                <a onclick="navigateTo('forget-password-page')" class="form-link secret-section">Forget your password?</a>
+                <a onclick="navigateTo('sign-up-page')" class="form-link">Or, sign up</a>
             </form>
         </div>
     </div>
@@ -97,8 +97,7 @@
                 <input type="text" id="bio" name="bio" class="input-field" placeholder="Bio" required><br>
                 <input type="number" id="birthyear" name="birthyear" class="input-field" placeholder="Birth Year" required><br>
                 <button type="submit" class="submit-button">Sign up</button>
-                <a href="forget_password.html" class="form-link secret-section">Forget your password?</a>
-                <a onclick="SigninToLogin()" class="form-link">Or, log in</a>
+                <a onclick="navigateTo('login-page')" class="form-link">Or, log in</a>
             </form>
         </div>
     </div>
@@ -112,7 +111,7 @@
             <form id="forget-password-form">
                 <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
                 <button type="submit" class="submit-button">Send code</button>
-                <a onclick="ForgetpasswordToLogin()" class="form-link">Or, Log in</a>
+                <a onclick="navigateTo('login-page')" class="form-link">Or, Log in</a>
             </form>
         </div>
     </div>
@@ -244,6 +243,7 @@
 
 
 <script src="js/rooter.js"></script>
+
 
 </body>
 </html>
