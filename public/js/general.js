@@ -12,7 +12,6 @@ function toggleLeftContainer() {
 }
 
 
-
 async function fetchProfileData(email,Allow=true) {
     try {
         if (Allow) {
@@ -63,7 +62,6 @@ function updateProfileUI(data) {
     // Update the username if it exists
     
 }
-
 
 
 async function fetchFriendsData(email,Allow) {
@@ -144,125 +142,123 @@ function updateFriends(data) {
         console.error('No friends data found.');
     }
 }
-
  
-    // Handle the user addition form
-document.getElementById("addFriendForm").addEventListener("submit", function(event) {
-        event.preventDefault();
 
-        const formData = new FormData(event.target);
-        const data = {
-            friendEmail: formData.get('friend'),
-            email: sessionStorage.getItem('email'),
-        };
+function addFriend(event) {
+    event.preventDefault();
 
-        fetch("http://192.168.0.158:3001/api-friend-add", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === "Friend added successfully!") {
-                fetchFriendsData(sessionStorage.getItem('email'),false);
-          
-            } else {
-                alert("Failed to add friend");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("An error occurred: " + error.message);
-        });
+    const formData = new FormData(event.target);
+    const data = {
+        friendEmail: formData.get('friend'),
+        email: sessionStorage.getItem('email'),
+    };
+
+    fetch("http://192.168.0.158:3001/api-friend-add", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Friend added successfully!") {
+            fetchFriendsData(sessionStorage.getItem('email'), false);
+        } else {
+            alert("Failed to add friend");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred: " + error.message);
+    });
+}
+
+async function handleUserClick(event) {
+    document.querySelectorAll('.chat-box').forEach((chatbox) => {
+      chatbox.style.display = 'none';
     });
 
-document.querySelector('.user-list').addEventListener('click', async (event) => {
-  document.querySelectorAll('.chat-box').forEach((chatbox) => {
-    chatbox.style.display = 'none';
-  });
+    console.log('Clicked element:', event.target);
 
-  console.log('Clicked element:', event.target);
+    if (!event.target.classList.contains('friend-selected')) return;
 
-  if (!event.target.classList.contains('friend-selected')) return;
+    const toEmail = event.target.getAttribute('email').trim(); // Get email from attribute
+    const fromEmail = sessionStorage.getItem('email'); // Get sender email from sessionStorage
 
-  const toEmail = event.target.getAttribute('email').trim(); // Get email from the data-email attribute
-  const fromEmail = sessionStorage.getItem('email'); // Store email in sessionStorage
 
-  if (!fromEmail) {
-    console.error('Gönderen kullanıcı bulunamadı.');
-    return;
-  }
-
-  sessionStorage.setItem('recipient', toEmail);
-
-  const container = document.getElementById('chat-container');
-  if (!container) {
-    console.error('Chat container bulunamadı.');
-    return;
-  }
-
-  let chatBox = document.getElementById(`chatbox-${toEmail}`);
-  if (!chatBox) {
-    chatBox = document.createElement('div');
-    chatBox.classList.add('chat-box');
-    chatBox.id = `chatbox-${toEmail}`;
-    container.prepend(chatBox);
-  }
-
-  chatBox.style.display = 'flex';
-  chatBox.innerHTML = ''; // Clear previous content
-
-  const loadingMessage = document.createElement('div');
-  loadingMessage.textContent = 'Loading messages...';
-  chatBox.appendChild(loadingMessage);
-
-  try {
-    const response = await fetch('http://192.168.0.158:3001/api-chat-get', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sender: fromEmail, receiver: toEmail }), // Use emails here
-    });
-
-    if (!response.ok) {
-      throw new Error(`Server error: ${response.status}`);
+    if (!fromEmail) {
+      console.error('Gönderen kullanıcı bulunamadı.');
+      return;
     }
 
-    const result = await response.json();
-    console.log('Server response:', result);
+    sessionStorage.setItem('recipient', toEmail);
 
-    chatBox.innerHTML = ''; // Clear loading message
+    const container = document.getElementById('chat-container');
+    if (!container) {
+      console.error('Chat container bulunamadı.');
+      return;
+    }
 
-    if (result.length === 0) {
-      const noMessagesDiv = document.createElement('div');
-      noMessagesDiv.textContent = 'No messages yet.';
-      chatBox.appendChild(noMessagesDiv);
-    } else {
-      result.forEach((message) => {
-        const activityDiv = document.createElement('div');
-        activityDiv.classList.add(message.from === fromEmail ? 'my-message' : 'other-message');
+    let chatBox = document.getElementById(`chatbox-${toEmail}`);
+    if (!chatBox) {
+      chatBox = document.createElement('div');
+      chatBox.classList.add('chat-box');
+      chatBox.id = `chatbox-${toEmail}`;
+      container.prepend(chatBox);
+    }
 
-        const strongElement = document.createElement('strong');
-        strongElement.className = message.from === fromEmail ? 'my-message-name' : 'other-message-name';
-        strongElement.textContent = `${message.from}:`;
+    chatBox.style.display = 'flex';
+    chatBox.innerHTML = ''; // Clear previous content
 
-        const messageText = document.createElement('p');
-        messageText.appendChild(strongElement);
-        messageText.appendChild(document.createTextNode(` ${message.message}`));
+    const loadingMessage = document.createElement('div');
+    loadingMessage.textContent = 'Loading messages...';
+    chatBox.appendChild(loadingMessage);
 
-        activityDiv.appendChild(messageText);
-        chatBox.appendChild(activityDiv);
+    try {
+      const response = await fetch('http://192.168.0.158:3001/api-chat-get', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sender: fromEmail, receiver: toEmail }),
       });
 
-      chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the last message
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    showErrorMessage('An error occurred while fetching messages.');
-  }
-});
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
 
+      const result = await response.json();
+      console.log('Server response:', result);
+
+      chatBox.innerHTML = ''; // Clear loading message
+
+      if (result.length === 0) {
+        const noMessagesDiv = document.createElement('div');
+        noMessagesDiv.textContent = 'No messages yet.';
+        chatBox.appendChild(noMessagesDiv);
+      } else {
+        result.forEach((message) => {
+          const activityDiv = document.createElement('div');
+          activityDiv.classList.add(message.from === fromEmail ? 'my-message' : 'other-message');
+
+          const strongElement = document.createElement('strong');
+          strongElement.className = message.from === fromEmail ? 'my-message-name' : 'other-message-name';
+          strongElement.textContent = `${message.from}:`;
+
+          const messageText = document.createElement('p');
+          messageText.appendChild(strongElement);
+          messageText.appendChild(document.createTextNode(` ${message.message}`));
+
+          activityDiv.appendChild(messageText);
+          chatBox.appendChild(activityDiv);
+        });
+
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the last message
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showErrorMessage('An error occurred while fetching messages.');
+    }
+  }
 
 // Utility function to show error message in UI
 function showErrorMessage(message) {
@@ -276,8 +272,7 @@ function showErrorMessage(message) {
 function toggleAddUser() {
         const container = document.getElementById('add-user-container');
         container.style.display = container.style.display === 'none' || container.style.display === '' ? 'block' : 'none';
-    }
-
+}
 
 
 function fetchProfileDataAccount() {
@@ -290,7 +285,6 @@ function fetchProfileDataAccount() {
         if (data.profileImage) {
             document.getElementById('profileImageAccount').src = data.profileImage;
         }
-        alert(data.name);
         document.getElementById('nameAccount').innerHTML = data.name;
         document.getElementById('emailAccount').textContent = "Email: " + data.email;
         document.getElementById('bioAccount').textContent = data.bio;
@@ -338,15 +332,3 @@ async function saveProfileData() {
         console.error('Error saving profile data:', error);
     }
 }
-
-document.getElementById('editProfileButton').addEventListener('click', () => {
-    document.getElementById('editModal').style.display = 'flex';
-});
-
-document.getElementById('closeModalButton').addEventListener('click', () => {
-    document.getElementById('editModal').style.display = 'none';
-});
-
-document.getElementById('saveChangesButton').addEventListener('click', saveProfileData);
-
-document.getElementById('updateImage').addEventListener('change', handleFileUpload);
