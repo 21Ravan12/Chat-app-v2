@@ -89,9 +89,39 @@ body {
 }
 
 .login-button:hover {
-    background: #008c9e;
+    background: linear-gradient(135deg, #008c9e, #005f6b);
+    transform: scale(1.05);
 }
 
+/* Mobil Menü */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle div {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Mobil Menü Açıkken */
+.navigation-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    background: rgba(34, 34, 34, 0.95);
+    width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s ease-in-out;
+}
 /* Hero Banner */
 .hero-banner {
     width: 90%;
