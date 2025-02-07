@@ -17,10 +17,28 @@ body {
 
 .account-container {
     width: 100%;
-    height: 100%;
+    height: 98dvh;
     display: none;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+.back-button {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    background-color: #1E90FF; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px; /* Set font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.back-button:hover {
+    background-color: #4682B4; /* Darker green on hover */
 }
 
 .profile-wrapper {
