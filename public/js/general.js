@@ -1,34 +1,36 @@
-
+// Toggle left container visibility 
 function toggleLeftContainer() {
     const button = document.querySelector('.toggle-btn');
     button.classList.toggle('rotated');
     const leftContainer = document.querySelector(".left-container");
     leftContainer.classList.toggle("open"); // Açma/Kapama
     if (leftContainer.classList.contains('open')) {
-        button.style.left = "330px"; // Açılınca içeride kalacak
+        button.style.left = "325px"; // Açılınca içeride kalacak
     } else {
         button.style.left = "0px"; // Kapanınca dışarı çıkacak
     }
 }
 
-
-async function fetchProfileData(email,Allow=true) {
+// Fetch profile data
+async function fetchProfileData(email, Allow = true) {
     try {
         if (Allow) {
-        const savedProfileData = sessionStorage.getItem('profileData');
-        if (savedProfileData) {
-            console.log("Profile data loaded from sessionStorage.");
-            const data = JSON.parse(savedProfileData);
-            updateProfileUI(data);
-            return; 
+            const savedProfileData = sessionStorage.getItem('profileData');
+            if (savedProfileData) {
+                console.log("Profile data loaded from sessionStorage.");
+                const data = JSON.parse(savedProfileData);
+                updateProfileUI(data);
+                return;
+            }
         }
-        }
-        const response = await fetch('http://192.168.0.158:3001/api-profile-get', {
-            method: 'POST',
+
+        const url = `http://your-server-adres/api/profile/get?email=${encodeURIComponent(email)}`;
+
+        const response = await fetch(url, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
+            }
         });
 
         if (!response.ok) {
@@ -49,6 +51,7 @@ async function fetchProfileData(email,Allow=true) {
     }
 }
 
+// Update profile UI
 function updateProfileUI(data) {
     sessionStorage.setItem('username',data.name);
     if (data.profileImage) {
@@ -63,25 +66,24 @@ function updateProfileUI(data) {
     
 }
 
-
-async function fetchFriendsData(email,Allow) {
+// Fetch friends data
+async function fetchFriendsData(email, Allow) {
     try {
         if (Allow) {
-        const savedProfileData = sessionStorage.getItem('friendsData');
-        if (savedProfileData) {
-            console.log("Friends data loaded from sessionStorage.");
-            const data = JSON.parse(savedProfileData);
-            updateFriends(data);
-            return; 
-        }
+            const savedFriendsData = sessionStorage.getItem('friendsData');
+            if (savedFriendsData) {
+                console.log("Friends data loaded from sessionStorage.");
+                const data = JSON.parse(savedFriendsData);
+                updateFriends(data);
+                return; 
+            }
         }
 
-        const response = await fetch('http://192.168.0.158:3001/api-friends-get', {
-            method: 'POST',
+        const response = await fetch(`http://your-server-adres/api/friend/get?email=${encodeURIComponent(email)}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
+            }
         });
 
         if (!response.ok) {
@@ -95,12 +97,13 @@ async function fetchFriendsData(email,Allow) {
         sessionStorage.setItem('friendsData', JSON.stringify(data));
 
     } catch (error) {
-        console.error('Error fetching profile data:', error);
-        document.getElementById('errorMessage').textContent = 'Failed to load profile data. Please try again later.';
+        console.error('Error fetching friends data:', error);
+        document.getElementById('errorMessage').textContent = 'Failed to load friends data. Please try again later.';
     }
 }
 
-function updateFriends(data) {
+// Update friends list UI
+async function updateFriends(data) {
     if (data.friends) {
         const user_list = document.querySelector('.user-list');
         if (!user_list) {
@@ -113,6 +116,7 @@ function updateFriends(data) {
         let count = data.friends.length;
         for (let index = 0; index < count; index++) {
             const friend = data.friends[index];
+            let unReadMessageCount = await getUnreadMessagesCount(friend.email,sessionStorage.getItem('email'));
             const activityDiv = document.createElement('div');
             activityDiv.setAttribute('email', friend.email);
             activityDiv.className = 'user friend-selected';
@@ -129,11 +133,20 @@ function updateFriends(data) {
             nameDiv.textContent = friend.name; // Friend's name
 
             nameDiv.setAttribute('email', friend.email);
-            nameDiv.className = 'friend-name friend-selected ';
+            nameDiv.className = 'friend-name friend-selected';
+
+            const unReadCount = document.createElement('div');
+            unReadCount.textContent = unReadMessageCount; 
+
+            unReadCount.setAttribute('email', friend.email);
+            unReadCount.className = 'unread-count';
 
             // Append the profile image and name to the user div
             activityDiv.appendChild(profileImageDiv);
             activityDiv.appendChild(nameDiv);
+            if (unReadMessageCount!==0) {
+                activityDiv.appendChild(unReadCount);
+            }
 
             // Append the user div to the user list
             user_list.appendChild(activityDiv);
@@ -143,7 +156,7 @@ function updateFriends(data) {
     }
 }
  
-
+// Add a new friend
 function addFriend(event) {
     event.preventDefault();
 
@@ -153,7 +166,7 @@ function addFriend(event) {
         email: sessionStorage.getItem('email'),
     };
 
-    fetch("http://192.168.0.158:3001/api-friend-add", {
+    fetch("http://your-server-adres/api/friend/add", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -174,6 +187,7 @@ function addFriend(event) {
     });
 }
 
+// Handle user click
 async function handleUserClick(event) {
     document.querySelectorAll('.chat-box').forEach((chatbox) => {
       chatbox.style.display = 'none';
@@ -186,6 +200,7 @@ async function handleUserClick(event) {
     const toEmail = event.target.getAttribute('email').trim(); // Get email from attribute
     const fromEmail = sessionStorage.getItem('email'); // Get sender email from sessionStorage
 
+    readMyMessages(toEmail, fromEmail);
 
     if (!fromEmail) {
       console.error('Gönderen kullanıcı bulunamadı.');
@@ -216,11 +231,10 @@ async function handleUserClick(event) {
     chatBox.appendChild(loadingMessage);
 
     try {
-      const response = await fetch('http://192.168.0.158:3001/api-chat-get', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sender: fromEmail, receiver: toEmail }),
-      });
+        const response = await fetch(`http://your-server-adres/api/chat/get?sender=${encodeURIComponent(fromEmail)}&receiver=${encodeURIComponent(toEmail)}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    });
 
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
@@ -253,14 +267,71 @@ async function handleUserClick(event) {
         });
 
         chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the last message
+        fetchFriendsData(sessionStorage.getItem('email'),true);
       }
     } catch (error) {
       console.error('Error:', error);
       showErrorMessage('An error occurred while fetching messages.');
     }
-  }
+}
 
-// Utility function to show error message in UI
+// Get unread messages count
+async function getUnreadMessagesCount(fromEmail, toEmail) {
+    try {
+        const response = await fetch(`http://your-server-adres/api/chat/unreadCount/get?sender=${encodeURIComponent(fromEmail)}&receiver=${encodeURIComponent(toEmail)}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Full server response:', result);
+
+        const unreadCount = Array.isArray(result) ? result[0]?.unreadMessages : result.unreadMessages;
+
+        if (!unreadCount || unreadCount === 0) {
+            console.log(`No unread messages.`);
+            return 0; 
+        } else {
+            console.log(`Unread messages: ${unreadCount}`);
+            return unreadCount;
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+        showErrorMessage('An error occurred while fetching messages.');
+        return 0; 
+    }
+}
+
+// Mark messages as read
+async function readMyMessages(fromEmail, toEmail) {
+    try {
+        const response = await fetch(`http://your-server-adres/api/chat/markAsRead`, { // Doğru endpoint olmalı
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sender: fromEmail, receiver: toEmail }) // Body eklendi
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Messages marked as read:', result);
+        return result; // Başarı durumunda sonucu döndür
+
+    } catch (error) {
+        console.error('Error:', error);
+        showErrorMessage('An error occurred while marking messages as read.');
+        return null; // Hata durumunda null dön
+    }
+}
+
+// Show error message
 function showErrorMessage(message) {
   const chatBox = document.getElementById('chat-box');
   const errorMessage = document.createElement('div');
@@ -269,12 +340,13 @@ function showErrorMessage(message) {
   chatBox.appendChild(errorMessage);
 }
    
+// Toggle add user container
 function toggleAddUser() {
         const container = document.getElementById('add-user-container');
         container.style.display = container.style.display === 'none' || container.style.display === '' ? 'block' : 'none';
 }
 
-
+// Fetch profile data for account
 function fetchProfileDataAccount() {
     try {
         
@@ -295,6 +367,7 @@ function fetchProfileDataAccount() {
     }
 }
 
+// Handle file upload
 function handleFileUpload(event) {
     const file = event.target.files[0];
     if (file) {
@@ -309,6 +382,7 @@ function handleFileUpload(event) {
     }
 }
 
+// Save profile data
 async function saveProfileData() {
     const name = document.getElementById('updateName').value;
     const bio = document.getElementById('updateBio').value;
@@ -317,7 +391,7 @@ async function saveProfileData() {
     const email = sessionStorage.getItem('email');
     
     try {
-        const response = await fetch('http://192.168.0.158:3001/api-profile-save', {
+        const response = await fetch('http://your-server-adres/api/profile/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
