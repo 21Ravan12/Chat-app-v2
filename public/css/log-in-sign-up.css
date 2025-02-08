@@ -1,6 +1,4 @@
 
-
-
 .login-page{
     width: 100%;
     height: 100%;
@@ -30,6 +28,13 @@
     align-items: center;
 }
 .code-insert-page{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.refresh-password-page{
     width: 100%;
     height: 100%;
     display: none;
@@ -132,3 +137,47 @@
     color: #FF4500; /* Orange-red for error text */
     display: none;
 }
+/* Base styles (already included in your code) */
+
+/* Mobile-responsive adjustments */
+@media (max-width: 768px) {
+    .registration-container {
+        width: 85%; /* Full width with some padding on small screens */
+    }
+
+}
+
+@media (max-width: 480px) {
+    .registration-container {
+        width: 70%; /* Full width with some padding on small screens */
+    }
+
+}
+
+/* Flexbox centering for forms */
+.login-page,
+.sign-up-page,
+.forget-password-page,
+.forget-code-insert-page,
+.code-insert-page,
+.refresh-password-page {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: none; /* Hidden by default */
+}
+
+/* Adjust styles for error messages */
+.error-message {
+    color: #FF4500;
+    display: block; /* Show error message */
+}
+
+/* Success message */
+.success-message {
+    color: #32CD32;
+    display: block; /* Show success message */
+}
+
