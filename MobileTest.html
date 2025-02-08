@@ -1122,61 +1122,61 @@ body {
 <div class="main-page"> 
         <header class="main-navbar">
             <div class="platform-logo">
-                <h1>SosyalPlatform</h1>
+                <h1>SocialPlatform</h1>
             </div>
             <nav class="navigation-links">
-                <a href="#about-section">Hakkında</a>
-                <a href="#features-section">Özellikler</a>
-                <a href="#signup-section">Kaydol</a>
-                <a onclick="navigateTo('login-page')" class="login-button">Giriş Yap</a>
+                <a href="#about-section">About</a>
+                <a href="#features-section">Features</a>
+                <a href="#signup-section">Sign Up</a>
+                <a onclick="navigateTo('login-page')" class="login-button">Log In</a>
             </nav>
         </header>
     
         <section class="hero-banner">
             <div class="hero-content">
-                <h2>Hayatını Paylaş, Dünyayı Keşfet</h2>
-                <p>Yeni arkadaşlar edinin, içerik paylaşın ve dünya çapında etkileşimde bulunun. Anında bağlantı kurun!</p>
-                <a href="#signup-section" class="primary-cta-button">Kaydol ve Başla</a>
+                <h2>Share Your Life, Explore the World</h2>
+                <p>Make new friends, share content, and interact globally. Connect instantly!</p>
+                <a href="#signup-section" class="primary-cta-button">Sign Up and Start</a>
             </div>
         </section>
     
         <section id="about-section" class="about-platform">
-            <h2>Hakkında</h2>
-            <p>SosyalPlatform, insanların bir araya gelip hikayelerini paylaşabildikleri, fotoğraf ve video gönderileriyle etkileşime girebildikleri, anında mesajlaşabilecekleri bir yer. Hep birlikte keşfetmeye başlayın!</p>
+            <h2>About</h2>
+            <p>SocialPlatform is a place where people can come together to share their stories, engage with photo and video posts, and message each other instantly. Start discovering together!</p>
         </section>
     
         <section id="features-section" class="platform-features">
-            <h2>Öne Çıkan Özellikler</h2>
+            <h2>Featured Features</h2>
             <div class="feature-list">
                 <div class="feature-item">
-                    <h3>Gerçek Zamanlı Mesajlaşma</h3>
-                    <p>Sevdiklerinizle anında iletişim kurun, bir sohbeti hiç beklemeden başlatın!</p>
+                    <h3>Real-time Messaging</h3>
+                    <p>Communicate instantly with your loved ones, start a conversation without waiting!</p>
                 </div>
                 <div class="feature-item">
-                    <h3>Hikaye Paylaşımı</h3>
-                    <p>Fotoğraflar, videolar ve metinlerle kendinizi ifade edin.</p>
+                    <h3>Story Sharing</h3>
+                    <p>Express yourself with photos, videos, and text.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>Takip Et ve Takipçi Kazan</h3>
-                    <p>Diğer kullanıcıları takip edin, yeni arkadaşlar edin ve onların içeriklerini keşfedin.</p>
+                    <h3>Follow and Gain Followers</h3>
+                    <p>Follow other users, make new friends, and discover their content.</p>
                 </div>
             </div>
         </section>
     
         <section id="signup-section" class="signup-call-to-action">
-            <h2>Hemen Kaydolun!</h2>
-            <p>Hızlıca bir hesap oluşturun ve içerik paylaşmaya başlayın!</p>
+            <h2>Sign Up Now!</h2>
+            <p>Create an account quickly and start sharing content!</p>
             <a onclick="navigateTo('sign-up-page')" class="primary-cta-button">Kaydol</a>
         </section>
     
         <footer class="main-footer">
-            <p>&copy; 2024 SosyalPlatform - Tüm Hakları Saklıdır.</p>
+            <p>&copy; 2024 SocialPlatform - All Rights Reserved.</p>
         </footer>
 </div>    
 
 <div class="login-page">
     <div class="registration-container">
-        <h1 class="registration-header">Login</h1>
+        <h1 class="registration-header">Log in</h1>
         <h2 class="error-message login-form-error"></h2>
         <div class="registration-form">
             <form id="login-form">
@@ -1276,23 +1276,22 @@ body {
             <img src="https://via.placeholder.com/40" alt="Profile Picture" id="profileImage" onclick="navigateTo('account-container')">
         </div>
         <button class="settings-btn">
-            <i class="fas fa-cog"></i> <!-- Single gear/cog icon -->
+            <i class="fas fa-cog"></i> 
         </button>
         
     </header>
 
     <div class="main-container">
-        <!-- Sol tarafın açılması ve kapanması için -->
          
         <div class="left-container">
             <h1 class="left-container-name">Social Feed</h1>
         
             <div class="user-list-1">
-                <button class="add-user-btn" onclick="toggleAddUser()">Arkadaş Ekle</button>
+                <button class="add-user-btn" onclick="toggleAddUser()">Add Friend</button>
                 <div class="add-user-container" id="add-user-container">
                     <form id="addFriendForm">
                         <input placeholder="Kullanıcı email-i girin..." type="text" id="friend" name="friend">
-                        <button class="settings-btn" type="submit">Ekle</button>
+                        <button class="settings-btn" type="submit">Add</button>
                     </form>
                 </div> 
             </div>
@@ -1317,7 +1316,7 @@ body {
 </div>
 
 <div class="account-container">
-    <button class="back-button" onclick="navigateTo('Landing-page')">Geri</button>
+    <button class="back-button" onclick="navigateTo('Landing-page')">Back</button>
     <div class="profile-wrapper">
         <div class="profile-card">
             <div class="profile-header">
@@ -1424,7 +1423,7 @@ document.getElementById("login-form").addEventListener("submit", function(event)
         password: formData.get('password')
     };
 
-    fetch("http://192.168.0.158:3001/api/login", {
+    fetch("http://your-server-adres/api/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1459,7 +1458,7 @@ document.getElementById("forget-password-form").addEventListener("submit", funct
         email: formData.get('email')
     };
 
-    fetch("http://192.168.0.158:3001/api/login/forget/enter", {
+    fetch("http://your-server-adres/api/login/forget/enter", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1493,7 +1492,7 @@ document.getElementById("forget-code-form").addEventListener("submit", function(
         code: formData.get('code'),
     };
 
-    fetch("http://192.168.0.158:3001/api/login/forget/end", {
+    fetch("http://your-server-adres/api/login/forget/end", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1540,7 +1539,7 @@ document.getElementById("refresh-password-form").addEventListener("submit", func
     };
 
     // API'ye istek gönder
-    fetch("http://192.168.0.158:3001/api/login/password/resfresh", {
+    fetch("http://your-server-adres/api/login/password/resfresh", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1578,7 +1577,7 @@ document.getElementById("sign-up-form").addEventListener("submit", function(even
         birthyear: formData.get('birthyear')
     };
 
-    fetch("http://192.168.0.158:3001/api/signup/enter", {
+    fetch("http://your-server-adres/api/signup/enter", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1607,7 +1606,7 @@ document.getElementById("enter-code-form").addEventListener("submit", function(e
         code: formData.get('code'),
     };
 
-    fetch("http://192.168.0.158:3001/api/signup/end", {
+    fetch("http://your-server-adres/api/signup/end", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1660,7 +1659,7 @@ async function fetchProfileData(email, Allow = true) {
         }
 
         // Email bilgisini GET isteği ile URL içinde gönderiyoruz
-        const url = `http://192.168.0.158:3001/api/profile/get?email=${encodeURIComponent(email)}`;
+        const url = `http://your-server-adres/api/profile/get?email=${encodeURIComponent(email)}`;
 
         const response = await fetch(url, {
             method: 'GET',
@@ -1714,7 +1713,7 @@ async function fetchFriendsData(email, Allow) {
             }
         }
 
-        const response = await fetch(`http://192.168.0.158:3001/api/friend/get?email=${encodeURIComponent(email)}`, {
+        const response = await fetch(`http://your-server-adres/api/friend/get?email=${encodeURIComponent(email)}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -1800,7 +1799,7 @@ function addFriend(event) {
         email: sessionStorage.getItem('email'),
     };
 
-    fetch("http://192.168.0.158:3001/api/friend/add", {
+    fetch("http://your-server-adres/api/friend/add", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -1864,7 +1863,7 @@ async function handleUserClick(event) {
     chatBox.appendChild(loadingMessage);
 
     try {
-        const response = await fetch(`http://192.168.0.158:3001/api/chat/get?sender=${encodeURIComponent(fromEmail)}&receiver=${encodeURIComponent(toEmail)}`, {
+        const response = await fetch(`http://your-server-adres/api/chat/get?sender=${encodeURIComponent(fromEmail)}&receiver=${encodeURIComponent(toEmail)}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     });
@@ -1910,7 +1909,7 @@ async function handleUserClick(event) {
 
 async function getUnreadMessagesCount(fromEmail, toEmail) {
     try {
-        const response = await fetch(`http://192.168.0.158:3001/api/chat/unreadCount/get?sender=${encodeURIComponent(fromEmail)}&receiver=${encodeURIComponent(toEmail)}`, {
+        const response = await fetch(`http://your-server-adres/api/chat/unreadCount/get?sender=${encodeURIComponent(fromEmail)}&receiver=${encodeURIComponent(toEmail)}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -1942,7 +1941,7 @@ async function getUnreadMessagesCount(fromEmail, toEmail) {
 
 async function readMyMessages(fromEmail, toEmail) {
     try {
-        const response = await fetch(`http://192.168.0.158:3001/api/chat/markAsRead`, { // Doğru endpoint olmalı
+        const response = await fetch(`http://your-server-adres/api/chat/markAsRead`, { // Doğru endpoint olmalı
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ sender: fromEmail, receiver: toEmail }) // Body eklendi
@@ -2020,7 +2019,7 @@ async function saveProfileData() {
     const email = sessionStorage.getItem('email');
     
     try {
-        const response = await fetch('http://192.168.0.158:3001/api/profile/update', {
+        const response = await fetch('http://your-server-adres/api/profile/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -2040,7 +2039,7 @@ async function saveProfileData() {
 
 <script>
     // Socket.io bağlantısını başlatıyoruz
-    const socket = io('http://192.168.0.158:3002'); // Server'ın adresi
+    const socket = io('http://your-server-adres'); // Server'ın adresi
     
     // Kullanıcı adı ve alıcı bilgisi
     let username;
