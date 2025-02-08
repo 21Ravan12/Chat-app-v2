@@ -7,12 +7,7 @@
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link id="account" rel="stylesheet" href="css/acount.css"></link>
-    <link id="landing-page" rel="stylesheet" href="css/landing-page.css"></link>
-    <link id="log-in" rel="stylesheet" href="css/log-in-sign-up.css"></link>
-    <link id="main-page" rel="stylesheet" href="css/main-page.css"></link>
-    <style id="account" >
-        
+    <style id="account" >     
 * {
     margin: 0;
     padding: 0;
@@ -186,7 +181,7 @@ body {
     background-color: #1E90FF;
     color: white;
     border: none;
-    padding: 15px 30px;
+    padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.2rem;
@@ -200,7 +195,7 @@ body {
     background-color: #444;
     color: #e0e0e0;
     border: none;
-    padding: 15px 30px;
+    padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.2rem;
@@ -219,7 +214,6 @@ body {
 
     </style>
     <style id="landing-page" >
-
 .Landing-page{
     width: 100%;
     height: 100%;
@@ -297,7 +291,7 @@ header {
 
 .left-container {
     width: 0; /* Başlangıçta kapalı */
-    height: 98dvh; /* Tam ekran yüksekliği */
+    height: 100dvh; /* Tam ekran yüksekliği */
     background-color: rgb(0, 0, 0); /* Siyah arka plan */
     border-right: 10px solid #242424; /* Kenarlık düzeltildi */
     border-top: 10px solid #242424;
@@ -309,7 +303,7 @@ header {
     left: 0;
     z-index: 1000; /* Diğer içeriklerin üstünde kalır */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.34); /* Daha fazla gölge */
-
+    border-radius: 5px;
 }
 
 .left-container.open {
@@ -366,6 +360,7 @@ header {
     border-right: 1px solid #333;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .user-list-1 {
@@ -398,14 +393,31 @@ header {
     justify-self: center;
 }
 
+.unread-count {
+    background-color: #ff4500; /* Kırmızımsı turuncu arka plan */
+    color: white; /* Beyaz yazı rengi */
+    font-size: 14px; /* Yazı boyutu */
+    font-weight: bold; /* Kalın yazı */
+    padding: 4px 8px; /* İç boşluk */
+    border-radius: 12px; /* Yuvarlatılmış köşeler */
+    display: inline-block; /* Satır içi blok */
+    min-width: 20px; /* Minimum genişlik */
+    text-align: center; /* Metni ortala */
+    position: absolute; /* Mutlak konumlandırma */
+    top: 5px; /* Üstten boşluk */
+    right: 5px; /* Sağdan boşluk */
+}
+
 .user {
     padding: 0px 12px;
     margin: 12px 0;
     background-color: #333;
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
+    position: relative;
 }
 
 .user:hover {
@@ -478,6 +490,16 @@ header {
     position: relative;
     padding-top: 18px; /* İsim için boşluk bırakıldı */
 }
+.my-message::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -8px; /* Sol üstte çıkıntı */
+    width: 0;
+    height: 0;
+    border-left: 16px solid #4CAF50;
+    border-bottom: 18px solid transparent;
+}
 
 .my-message-name {
     position: absolute;
@@ -504,6 +526,17 @@ header {
     margin-bottom: 5px;
     position: relative;
     padding-top: 18px; /* İsim için boşluk bırakıldı */
+}
+
+.other-message::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -8px; /* Sol üstte çıkıntı */
+    width: 0;
+    height: 0;
+    border-right: 16px solid #e3f2fd;
+    border-bottom: 18px solid transparent;
 }
 
 .other-message-name {
@@ -569,9 +602,6 @@ header {
 
     </style>
     <style id="log-in" >
-
-
-
 .login-page{
     width: 100%;
     height: 100%;
@@ -601,6 +631,13 @@ header {
     align-items: center;
 }
 .code-insert-page{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.refresh-password-page{
     width: 100%;
     height: 100%;
     display: none;
@@ -703,6 +740,50 @@ header {
     color: #FF4500; /* Orange-red for error text */
     display: none;
 }
+/* Base styles (already included in your code) */
+
+/* Mobile-responsive adjustments */
+@media (max-width: 768px) {
+    .registration-container {
+        width: 85%; /* Full width with some padding on small screens */
+    }
+
+}
+
+@media (max-width: 480px) {
+    .registration-container {
+        width: 70%; /* Full width with some padding on small screens */
+    }
+
+}
+
+/* Flexbox centering for forms */
+.login-page,
+.sign-up-page,
+.forget-password-page,
+.forget-code-insert-page,
+.code-insert-page,
+.refresh-password-page {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: none; /* Hidden by default */
+}
+
+/* Adjust styles for error messages */
+.error-message {
+    color: #FF4500;
+    display: block; /* Show error message */
+}
+
+/* Success message */
+.success-message {
+    color: #32CD32;
+    display: block; /* Show success message */
+}
+
 
     </style>
     <style id="main-page" >
@@ -1096,7 +1177,7 @@ body {
 <div class="login-page">
     <div class="registration-container">
         <h1 class="registration-header">Login</h1>
-        <h2 class="error-message"></h2>
+        <h2 class="error-message login-form-error"></h2>
         <div class="registration-form">
             <form id="login-form">
                 <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
@@ -1130,7 +1211,7 @@ body {
 <div class="forget-password-page">
     <div class="registration-container">
         <h1 class="registration-header">Account</h1>
-        <h2 class="error-message"></h2>
+        <h2 class="error-message forget-password-error"></h2>
         <div class="registration-form">
             <form id="forget-password-form">
                 <input type="email" id="email" name="email" class="input-field" placeholder="Email" required><br>
@@ -1145,7 +1226,7 @@ body {
     <div class="registration-container">
         <h1 class="registration-header">Insert the code</h1>
         <div class="registration-form">
-            <h2 class="error-message"></h2>
+            <h2 class="error-message forget-code-page-error"></h2>
             <form id="forget-code-form">
                 <input type="text" id="code" name="code" class="input-field" placeholder="Code" required><br>
                 <button type="submit" class="submit-button">Send</button>
@@ -1154,11 +1235,29 @@ body {
     </div>
 </div>
 
+<div class="refresh-password-page">
+    <div class="registration-container">
+      <h1 class="registration-header">Insert the code</h1>
+      <div class="registration-form">
+        <h2 class="error-message refresh-password-error"></h2>
+        <form id="refresh-password-form">
+          <!-- Yeni şifre -->
+          <input type="password" id="new-password" name="new-password" class="input-field" placeholder="New Password" required><br>
+  
+          <!-- Yeni şifre tekrar -->
+          <input type="password" id="confirm-new-password" name="confirm-new-password" class="input-field" placeholder="Confirm New Password" required><br>
+  
+          <button type="submit" class="submit-button">Submit</button>
+        </form>
+      </div>
+    </div>
+</div>
+  
 <div class="code-insert-page">
     <div class="registration-container">
         <h1 class="registration-header">Insert the code</h1>
         <div class="registration-form">
-            <h2 class="error-message"></h2>
+            <h2 class="error-message insert-page-error"></h2>
             <form id="enter-code-form">
                 <input type="text" id="code" name="code" class="input-field" placeholder="Code" required><br>
                 <button type="submit" class="submit-button">Send</button>
@@ -1192,7 +1291,7 @@ body {
                 <button class="add-user-btn" onclick="toggleAddUser()">Arkadaş Ekle</button>
                 <div class="add-user-container" id="add-user-container">
                     <form id="addFriendForm">
-                        <input placeholder="Kullanıcı adı girin..." type="text" id="friend" name="friend">
+                        <input placeholder="Kullanıcı email-i girin..." type="text" id="friend" name="friend">
                         <button class="settings-btn" type="submit">Ekle</button>
                     </form>
                 </div> 
@@ -1269,7 +1368,7 @@ body {
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-    const pages = ["main-page", "login-page", "sign-up-page", "forget-password-page", "forget-code-insert-page", "code-insert-page", "Landing-page","account-container"];
+    const pages = ["main-page", "login-page", "sign-up-page", "forget-password-page", "forget-code-insert-page", "code-insert-page", "refresh-password-page", "Landing-page","account-container"];
     
     function navigateTo(page) {
         sessionStorage.setItem('location',page);
@@ -1314,7 +1413,8 @@ body {
 </script>
 
 <script>
-    document.getElementById("login-form").addEventListener("submit", function(event) {
+    
+document.getElementById("login-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -1324,7 +1424,7 @@ body {
         password: formData.get('password')
     };
 
-    fetch("http://192.168.0.158:3001/api-login", {
+    fetch("http://192.168.0.158:3001/api/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1337,9 +1437,9 @@ body {
         if (data.message == "Login successful!") {
             navigateTo("Landing-page");
         }else{
-            document.querySelector('.error').textContent = data.message;
-            document.querySelector('.error').style.display = "block";
-            document.querySelector('.secret').style.display = "block";
+            document.querySelector('.login-form-error').textContent = data.message;
+            document.querySelector('.login-form-error').style.display = "block";
+            document.querySelector('.secret-section').style.display = "block";
         }
         
 
@@ -1359,7 +1459,7 @@ document.getElementById("forget-password-form").addEventListener("submit", funct
         email: formData.get('email')
     };
 
-    fetch("http://192.168.0.158:3001/api-forget", {
+    fetch("http://192.168.0.158:3001/api/login/forget/enter", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1372,8 +1472,8 @@ document.getElementById("forget-password-form").addEventListener("submit", funct
         if (data.message == "Password recovery code sent successfully!") {
             navigateTo("forget-code-insert-page");
         }else{
-            document.querySelector('.error').textContent = data.message;
-            document.querySelector('.error').style.display = "block";
+            document.querySelector('.forget-password-error').textContent = data.message;
+            document.querySelector('.forget-password-error').style.display = "block";
            
         }
         
@@ -1393,7 +1493,7 @@ document.getElementById("forget-code-form").addEventListener("submit", function(
         code: formData.get('code'),
     };
 
-    fetch("http://192.168.0.158:3001/api-forget-end", {
+    fetch("http://192.168.0.158:3001/api/login/forget/end", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1404,10 +1504,56 @@ document.getElementById("forget-code-form").addEventListener("submit", function(
     .then(data => {
        
         if (data.message == "Code successfully verified!") {
-            navigateTo("Landing-page");
+            navigateTo("refresh-password-page");
         }else{
-            document.querySelector('.error').textContent = data.message;
-            document.querySelector('.error').style.display = "block";
+            document.querySelector('.forget-code-page-error').textContent = data.message;
+            document.querySelector('.forget-code-page-error').style.display = "block";
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Error!");
+    });
+});
+
+document.getElementById("refresh-password-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Form verilerini al
+    const formData = new FormData(event.target);
+
+    // Yeni şifre ve şifre tekrarı
+    const newPassword = formData.get('new-password');
+    const confirmNewPassword = formData.get('confirm-new-password');
+
+    // Şifrelerin eşleşip eşleşmediğini kontrol et
+    if (newPassword !== confirmNewPassword) {
+        document.querySelector('.refresh-password-error').textContent = "New passwords do not match.";
+        document.querySelector('.refresh-password-error').style.display = "block";
+        return; // Şifreler eşleşmiyorsa işlemi durdur
+    }
+
+    // Kullanıcı bilgilerini hazırla
+    const data = {
+        email: sessionStorage.getItem('email'),
+        newPassword: newPassword // Yeni şifre
+    };
+
+    // API'ye istek gönder
+    fetch("http://192.168.0.158:3001/api/login/password/resfresh", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Password updated successfully!") {
+            navigateTo('login-page');
+        } else {
+            document.querySelector('.refresh-password-error').textContent = data.error || "An error occurred.";
+            document.querySelector('.refresh-password-error').style.display = "block";
         }
     })
     .catch(error => {
@@ -1418,9 +1564,9 @@ document.getElementById("forget-code-form").addEventListener("submit", function(
 
 document.getElementById("sign-up-form").addEventListener("submit", function(event) {
     event.preventDefault();
-    document.querySelector('.succes').style.color = "green";
-    document.querySelector('.succes').textContent = 'Wait a minut....';
-    document.querySelector('.succes').style.display = "block";
+    document.querySelector('.success-message').style.color = "green";
+    document.querySelector('.success-message').textContent = 'Wait a minut....';
+    document.querySelector('.success-message').style.display = "block";
 
     const formData = new FormData(event.target);
     sessionStorage.setItem('email',formData.get('email'));
@@ -1432,7 +1578,7 @@ document.getElementById("sign-up-form").addEventListener("submit", function(even
         birthyear: formData.get('birthyear')
     };
 
-    fetch("http://192.168.0.158:3001/api-enter", {
+    fetch("http://192.168.0.158:3001/api/signup/enter", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1444,8 +1590,8 @@ document.getElementById("sign-up-form").addEventListener("submit", function(even
         if (data.message == "Verification code sent successfully!") {
             navigateTo("code-insert-page");
         }
-        document.querySelector('.succes').textContent = data.error;
-        document.querySelector('.succes').style.color = "red";
+        document.querySelector('.success-message').textContent = data.error;
+        document.querySelector('.success-message').style.color = "red";
     })
     .catch(error => {
         console.error("Error:", error);
@@ -1461,7 +1607,7 @@ document.getElementById("enter-code-form").addEventListener("submit", function(e
         code: formData.get('code'),
     };
 
-    fetch("http://192.168.0.158:3001/api-enter-end", {
+    fetch("http://192.168.0.158:3001/api/signup/end", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -1474,8 +1620,8 @@ document.getElementById("enter-code-form").addEventListener("submit", function(e
         if (data.message == "User successfully signed up!") {
             navigateTo("Landing-page");
         }else{
-            document.querySelector('.error').textContent = data.message;
-            document.querySelector('.error').style.display = "block";
+            document.querySelector('.insert-page-error').textContent = data.message;
+            document.querySelector('.insert-page-error').style.display = "block";
         }
     })
     .catch(error => {
@@ -1501,23 +1647,26 @@ function toggleLeftContainer() {
 }
 
 
-async function fetchProfileData(email,Allow=true) {
+async function fetchProfileData(email, Allow = true) {
     try {
         if (Allow) {
-        const savedProfileData = sessionStorage.getItem('profileData');
-        if (savedProfileData) {
-            console.log("Profile data loaded from sessionStorage.");
-            const data = JSON.parse(savedProfileData);
-            updateProfileUI(data);
-            return; 
+            const savedProfileData = sessionStorage.getItem('profileData');
+            if (savedProfileData) {
+                console.log("Profile data loaded from sessionStorage.");
+                const data = JSON.parse(savedProfileData);
+                updateProfileUI(data);
+                return;
+            }
         }
-        }
-        const response = await fetch('http://192.168.0.158:3001/api-profile-get', {
-            method: 'POST',
+
+        // Email bilgisini GET isteği ile URL içinde gönderiyoruz
+        const url = `http://192.168.0.158:3001/api/profile/get?email=${encodeURIComponent(email)}`;
+
+        const response = await fetch(url, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
+            }
         });
 
         if (!response.ok) {
@@ -1553,24 +1702,23 @@ function updateProfileUI(data) {
 }
 
 
-async function fetchFriendsData(email,Allow) {
+async function fetchFriendsData(email, Allow) {
     try {
         if (Allow) {
-        const savedProfileData = sessionStorage.getItem('friendsData');
-        if (savedProfileData) {
-            console.log("Friends data loaded from sessionStorage.");
-            const data = JSON.parse(savedProfileData);
-            updateFriends(data);
-            return; 
-        }
+            const savedFriendsData = sessionStorage.getItem('friendsData');
+            if (savedFriendsData) {
+                console.log("Friends data loaded from sessionStorage.");
+                const data = JSON.parse(savedFriendsData);
+                updateFriends(data);
+                return; 
+            }
         }
 
-        const response = await fetch('http://192.168.0.158:3001/api-friends-get', {
-            method: 'POST',
+        const response = await fetch(`http://192.168.0.158:3001/api/friend/get?email=${encodeURIComponent(email)}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
+            }
         });
 
         if (!response.ok) {
@@ -1584,12 +1732,12 @@ async function fetchFriendsData(email,Allow) {
         sessionStorage.setItem('friendsData', JSON.stringify(data));
 
     } catch (error) {
-        console.error('Error fetching profile data:', error);
-        document.getElementById('errorMessage').textContent = 'Failed to load profile data. Please try again later.';
+        console.error('Error fetching friends data:', error);
+        document.getElementById('errorMessage').textContent = 'Failed to load friends data. Please try again later.';
     }
 }
 
-function updateFriends(data) {
+async function updateFriends(data) {
     if (data.friends) {
         const user_list = document.querySelector('.user-list');
         if (!user_list) {
@@ -1602,6 +1750,7 @@ function updateFriends(data) {
         let count = data.friends.length;
         for (let index = 0; index < count; index++) {
             const friend = data.friends[index];
+            let unReadMessageCount = await getUnreadMessagesCount(friend.email,sessionStorage.getItem('email'));
             const activityDiv = document.createElement('div');
             activityDiv.setAttribute('email', friend.email);
             activityDiv.className = 'user friend-selected';
@@ -1618,11 +1767,20 @@ function updateFriends(data) {
             nameDiv.textContent = friend.name; // Friend's name
 
             nameDiv.setAttribute('email', friend.email);
-            nameDiv.className = 'friend-name friend-selected ';
+            nameDiv.className = 'friend-name friend-selected';
+
+            const unReadCount = document.createElement('div');
+            unReadCount.textContent = unReadMessageCount; 
+
+            unReadCount.setAttribute('email', friend.email);
+            unReadCount.className = 'unread-count';
 
             // Append the profile image and name to the user div
             activityDiv.appendChild(profileImageDiv);
             activityDiv.appendChild(nameDiv);
+            if (unReadMessageCount!==0) {
+                activityDiv.appendChild(unReadCount);
+            }
 
             // Append the user div to the user list
             user_list.appendChild(activityDiv);
@@ -1642,7 +1800,7 @@ function addFriend(event) {
         email: sessionStorage.getItem('email'),
     };
 
-    fetch("http://192.168.0.158:3001/api-friend-add", {
+    fetch("http://192.168.0.158:3001/api/friend/add", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -1675,6 +1833,7 @@ async function handleUserClick(event) {
     const toEmail = event.target.getAttribute('email').trim(); // Get email from attribute
     const fromEmail = sessionStorage.getItem('email'); // Get sender email from sessionStorage
 
+    readMyMessages(toEmail, fromEmail);
 
     if (!fromEmail) {
       console.error('Gönderen kullanıcı bulunamadı.');
@@ -1705,11 +1864,10 @@ async function handleUserClick(event) {
     chatBox.appendChild(loadingMessage);
 
     try {
-      const response = await fetch('http://192.168.0.158:3001/api-chat-get', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sender: fromEmail, receiver: toEmail }),
-      });
+        const response = await fetch(`http://192.168.0.158:3001/api/chat/get?sender=${encodeURIComponent(fromEmail)}&receiver=${encodeURIComponent(toEmail)}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    });
 
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
@@ -1742,6 +1900,7 @@ async function handleUserClick(event) {
         });
 
         chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the last message
+        fetchFriendsData(sessionStorage.getItem('email'),true);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -1749,7 +1908,62 @@ async function handleUserClick(event) {
     }
   }
 
-// Utility function to show error message in UI
+async function getUnreadMessagesCount(fromEmail, toEmail) {
+    try {
+        const response = await fetch(`http://192.168.0.158:3001/api/chat/unreadCount/get?sender=${encodeURIComponent(fromEmail)}&receiver=${encodeURIComponent(toEmail)}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Full server response:', result);
+
+        // Eğer API bir dizi döndürüyorsa, ilk elemanı al
+        const unreadCount = Array.isArray(result) ? result[0]?.unreadMessages : result.unreadMessages;
+
+        if (!unreadCount || unreadCount === 0) {
+            console.log(`No unread messages.`);
+            return 0; // Boş dönüş yaparak hataları önlüyoruz
+        } else {
+            console.log(`Unread messages: ${unreadCount}`);
+            return unreadCount;
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+        showErrorMessage('An error occurred while fetching messages.');
+        return 0; // Hata olursa sıfır dön
+    }
+}
+
+async function readMyMessages(fromEmail, toEmail) {
+    try {
+        const response = await fetch(`http://192.168.0.158:3001/api/chat/markAsRead`, { // Doğru endpoint olmalı
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sender: fromEmail, receiver: toEmail }) // Body eklendi
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Messages marked as read:', result);
+        return result; // Başarı durumunda sonucu döndür
+
+    } catch (error) {
+        console.error('Error:', error);
+        showErrorMessage('An error occurred while marking messages as read.');
+        return null; // Hata durumunda null dön
+    }
+}
+
+
 function showErrorMessage(message) {
   const chatBox = document.getElementById('chat-box');
   const errorMessage = document.createElement('div');
@@ -1806,7 +2020,7 @@ async function saveProfileData() {
     const email = sessionStorage.getItem('email');
     
     try {
-        const response = await fetch('http://192.168.0.158:3001/api-profile-save', {
+        const response = await fetch('http://192.168.0.158:3001/api/profile/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -1825,8 +2039,8 @@ async function saveProfileData() {
 </script>
 
 <script>
-        // Socket.io bağlantısını başlatıyoruz
-        const socket = io('http://192.168.0.158:3002'); // Server'ın adresi
+    // Socket.io bağlantısını başlatıyoruz
+    const socket = io('http://192.168.0.158:3002'); // Server'ın adresi
     
     // Kullanıcı adı ve alıcı bilgisi
     let username;
@@ -1843,6 +2057,7 @@ async function saveProfileData() {
     
     // Mesaj gönderme işlemi
     function sendPrivateMessage() {
+      readMyMessages(recipient, username);
       recipient = sessionStorage.getItem('recipient');
       const messageInput = document.getElementById('message-input');
       const message = messageInput.value;
@@ -1862,6 +2077,7 @@ async function saveProfileData() {
       appendMessage(messageData.from, messageData, false); // Gelen mesaj
     });
     
+
     // Mesajları ekrana eklemek
     function appendMessage(chatUser, messageData, isMyMessage) {
       const chatBox = document.getElementById(`chatbox-${chatUser}`);
