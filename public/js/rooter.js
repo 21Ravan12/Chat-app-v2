@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const pages = ["main-page", "login-page", "sign-up-page", "forget-password-page", "forget-code-insert-page", "code-insert-page", "Landing-page","account-container"];
+    const pages = ["main-page", "login-page", "sign-up-page", "forget-password-page", "forget-code-insert-page", "code-insert-page", "refresh-password-page", "Landing-page","account-container"];
     
     function navigateTo(page) {
         sessionStorage.setItem('location',page);
@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Sayfa başlangıcında ana sayfa görünsün
     if (sessionStorage.getItem('location')) {
         navigateTo(sessionStorage.getItem('location'));
     }else {
@@ -36,7 +35,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    
-    // HTML içinde onclick kullanıyorsan, bunları global yap
     window.navigateTo = navigateTo;
 });
