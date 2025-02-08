@@ -36,14 +36,14 @@ body {
     position: absolute;
     left: 6px;
     top: 6px;
-    background-color: #1E90FF; /* Green background */
-    color: white; /* White text */
-    border: none; /* Remove default border */
-    padding: 10px 20px; /* Add some padding */
-    font-size: 16px; /* Set font size */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition */
+    background-color: #1E90FF; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
 
 .back-button:hover {
@@ -243,11 +243,11 @@ header {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    transition: 0.3s ease-out, transform 0.2s ease; /* Added transition for transform and color */
+    transition: 0.3s ease-out, transform 0.2s ease; 
 }
 
 .profile-btn img:hover {
-        transform: scale(1.15); /* Slightly scale up the button */
+        transform: scale(1.15); 
 }
 
 .settings-btn {
@@ -256,12 +256,12 @@ header {
         border: none;
         margin: 6px;
         cursor: pointer;
-        transition: 0.3s ease-out, transform 0.2s ease; /* Added transition for transform and color */
+        transition: 0.3s ease-out, transform 0.2s ease; 
     }
 
     .settings-btn:hover {
         color: rgb(224, 223, 223);
-        transform: scale(1.15); /* Slightly scale up the button */
+        transform: scale(1.15);
     }
 
     .settings-btn i {
@@ -290,64 +290,62 @@ header {
 }
 
 .left-container {
-    width: 0; /* Başlangıçta kapalı */
-    height: 100dvh; /* Tam ekran yüksekliği */
-    background-color: rgb(0, 0, 0); /* Siyah arka plan */
-    border-right: 10px solid #242424; /* Kenarlık düzeltildi */
+    width: 0; 
+    height: 100dvh; 
+    background-color: rgb(0, 0, 0); 
+    border-right: 10px solid #242424; 
     border-top: 10px solid #242424;
     border-bottom: 10px solid #242424;
-    overflow: hidden; /* İçerik taşmasını engeller */
-    transition: width 0.3s ease; /* Yumuşak genişleme efekti */
-    position: fixed; /* Sayfada sabit durması için */
-    top: 0px; /* px birimi eklendi */
+    overflow: hidden; 
+    transition: width 0.3s ease; 
+    position: fixed; 
+    top: 0px; 
     left: 0;
-    z-index: 1000; /* Diğer içeriklerin üstünde kalır */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.34); /* Daha fazla gölge */
+    z-index: 1000; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.34); 
     border-radius: 5px;
 }
 
 .left-container.open {
-    width: 330px; /* Açıldığında genişliği belirlenmiş olur */
+    width: 330px; 
 }
 
 
-
-/* Toggle Button */
 .toggle-btn {
     z-index: 1001;
     position: absolute;
     top: -60px;
     left: 0px;
-    background-color: #242424; /* Yeşil renk, dikkat çekici ve uyumlu */
+    background-color: #242424; 
     color: white;
     border: none;
-    border-radius: 5px; /* Yuvarlak buton */
-    padding: 26px 6px; /* İçerideki simge için daha geniş alan */
-    font-size: 15px; /* Ok simgesi için daha büyük boyut */
+    border-radius: 5px; 
+    padding: 26px 6px; 
+    font-size: 15px; 
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease; /* Yumuşak geçişler */
+    transition: all 0.3s ease; 
     display: flex;
     align-items: center;
-    justify-content: center; /* Simgeyi ortalar */
+    justify-content: center; 
 
 }
 
 .toggle-btn:hover {
-    background-color: #242424; /* Hover durumunda hafif koyulaşma */
+    background-color: #242424; 
 }
 
 .toggle-btn.rotated i {
-    transform: rotate(180deg); /* İkonu 180 derece döndürür */
+    transform: rotate(180deg); 
 }
 .left-container-name {
-    font-size: 25px; /* Yazı boyutu */
-    font-weight: bold; /* Kalın yazı */
-    color: white; /* Yazı rengi */
-    background-color: #2c2c2c; /* Arka plan rengi */
+    font-size: 25px; 
+    font-weight: bold; 
+    color: white; 
+    background-color: #2c2c2c;
     padding: 20px;
-    padding-bottom: 30px; /* İç boşluk */
-    text-align: center; /* Metni ortala */
+    padding-bottom: 30px; 
+    text-align: center; 
     margin: 0;
 }
 
@@ -374,7 +372,7 @@ header {
     z-index: 1000;
 }
 
-/* Add this to your CSS file */
+
 .friend-profile-image {
     background-size: cover;
     background-position: center;
@@ -394,18 +392,18 @@ header {
 }
 
 .unread-count {
-    background-color: #ff4500; /* Kırmızımsı turuncu arka plan */
-    color: white; /* Beyaz yazı rengi */
-    font-size: 14px; /* Yazı boyutu */
-    font-weight: bold; /* Kalın yazı */
-    padding: 4px 8px; /* İç boşluk */
-    border-radius: 12px; /* Yuvarlatılmış köşeler */
-    display: inline-block; /* Satır içi blok */
-    min-width: 20px; /* Minimum genişlik */
-    text-align: center; /* Metni ortala */
-    position: absolute; /* Mutlak konumlandırma */
-    top: 5px; /* Üstten boşluk */
-    right: 5px; /* Sağdan boşluk */
+    background-color: #ff4500; 
+    color: white; 
+    font-size: 14px; 
+    font-weight: bold; 
+    padding: 4px 8px; 
+    border-radius: 12px; 
+    display: inline-block; 
+    min-width: 20px; 
+    text-align: center; 
+    position: absolute; 
+    top: 5px; 
+    right: 5px; 
 }
 
 .user {
@@ -440,7 +438,7 @@ header {
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: flex-end; /* Change this from space-between to flex-end */
+    justify-content: flex-end; 
     flex-grow: 1;
     height: 92.5dvh;
 }
@@ -452,7 +450,7 @@ header {
     padding: 15px;
     overflow-y: auto;
     display: block;
-    flex-direction: column; /* Remove column-reverse to fix the message order */
+    flex-direction: column; 
     flex-grow: 1;
 }
 
@@ -488,13 +486,13 @@ header {
     margin-top: 5px;
     margin-bottom: 5px;
     position: relative;
-    padding-top: 18px; /* İsim için boşluk bırakıldı */
+    padding-top: 18px; 
 }
 .my-message::after {
     content: "";
     position: absolute;
     top: 0;
-    right: -8px; /* Sol üstte çıkıntı */
+    right: -8px; 
     width: 0;
     height: 0;
     border-left: 16px solid #4CAF50;
@@ -525,14 +523,14 @@ header {
     margin-top: 5px;
     margin-bottom: 5px;
     position: relative;
-    padding-top: 18px; /* İsim için boşluk bırakıldı */
+    padding-top: 18px; 
 }
 
 .other-message::after {
     content: "";
     position: absolute;
     top: 0;
-    left: -8px; /* Sol üstte çıkıntı */
+    left: -8px; 
     width: 0;
     height: 0;
     border-right: 16px solid #e3f2fd;
@@ -580,7 +578,7 @@ header {
     background-color: #0056b3;
 }
 .add-user-container {
-    display: none; /* Varsayılan olarak gizli */
+    display: none; 
     margin-top: 15px;
     text-align: center;
 }
@@ -645,51 +643,46 @@ header {
     align-items: center;
 }
 
-/* Main container with dark theme styling */
 .registration-container {
-    background-color: #1f1f1f; /* Dark container background */
+    background-color: #1f1f1f; 
     padding: 20px;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3); 
     border-radius: 10px;
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
 }
 
-/* Heading style for the form title */
 .registration-header {
     text-align: center;
     margin-bottom: 20px;
-    color: #1E90FF; /* Blue for title */
+    color: #1E90FF; 
     font-size: 2em;
 }
 
-/* Styling for input fields in the registration form */
 .input-field {
     width: 100%;
     padding: 12px;
     margin-top: 10px;
     margin-bottom: 20px;
-    border: 2px solid #555; /* Dark border */
+    border: 2px solid #555; 
     border-radius: 5px;
     font-size: 1em;
     transition: border-color 0.3s;
-    background-color: #333; /* Dark input background */
-    color: #e0e0e0; /* Light text inside inputs */
+    background-color: #333; 
+    color: #e0e0e0; 
     box-sizing: border-box;
 }
 
-/* Focus effect on input fields */
 .input-field:focus {
-    border-color: #1E90FF; /* Blue focus border */
+    border-color: #1E90FF; 
     outline: none;
 }
 
-/* Styling for submit button */
 .submit-button {
     width: 100%;
     padding: 12px;
-    background-color: #1E90FF; /* Blue button background */
+    background-color: #1E90FF; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -698,66 +691,56 @@ header {
     transition: background-color 0.3s;
 }
 
-/* Hover effect for the button */
 .submit-button:hover {
-    background-color: #4682B4; /* Darker blue on hover */
+    background-color: #4682B4; 
 }
 
-/* Styling for the link below the form */
 .form-link {
     display: block;
     text-align: center;
     margin-top: 15px;
     text-decoration: none;
-    color: #888; /* Light grey for links */
+    color: #888; 
     font-size: 0.9em;
 }
 
-/* Hover effect for the link */
 .form-link:hover {
-    color: #1E90FF; /* Blue color on hover */
+    color: #1E90FF; 
 }
 
-/* Container for the registration form fields */
 .registration-form {
     display: flex;
     flex-direction: column;
 }
 
-/* Success message for registration */
 .success-message {
-    color: #32CD32; /* Green success text */
+    color: #32CD32; 
     display: none;
 }
 
-/* Hidden secret section */
 .secret-section {
     display: none;
 }
 
-/* Error message for invalid form submission */
 .error-message {
-    color: #FF4500; /* Orange-red for error text */
+    color: #FF4500; 
     display: none;
 }
-/* Base styles (already included in your code) */
 
-/* Mobile-responsive adjustments */
 @media (max-width: 768px) {
     .registration-container {
-        width: 85%; /* Full width with some padding on small screens */
+        width: 85%; 
     }
 
 }
 
 @media (max-width: 480px) {
     .registration-container {
-        width: 70%; /* Full width with some padding on small screens */
+        width: 70%; 
     }
 
 }
 
-/* Flexbox centering for forms */
 .login-page,
 .sign-up-page,
 .forget-password-page,
@@ -769,25 +752,22 @@ header {
     align-items: center;
     width: 100%;
     height: 100%;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
-/* Adjust styles for error messages */
 .error-message {
     color: #FF4500;
-    display: block; /* Show error message */
+    display: block;
 }
 
-/* Success message */
 .success-message {
     color: #32CD32;
-    display: block; /* Show success message */
+    display: block; 
 }
 
 
     </style>
     <style id="main-page" >
-/* Genel Stiller */
 * {
     margin: 0;
     padding: 0;
@@ -801,7 +781,6 @@ body {
     color: white;
 }
 
-/* Ana Sayfa */
 .main-page {
     display: none;
     flex-direction: column;
@@ -810,8 +789,6 @@ body {
     width: 100%;
 }
 
-/* Navbar */
-/* Navbar */
 .main-navbar {
     width: 100%;
     display: flex;
@@ -827,13 +804,11 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-/* Navbar Scroll Efekti */
 .main-navbar.scrolled {
     background: rgba(20, 20, 20, 0.95);
     padding: 10px 5%;
 }
 
-/* Logo */
 .platform-logo h1 {
     font-size: 2.2em;
     font-weight: bold;
@@ -845,7 +820,6 @@ body {
     color: #00eaff;
 }
 
-/* Navigation Links */
 .navigation-links {
     display: flex;
     gap: 25px;
@@ -865,7 +839,6 @@ body {
     background: rgba(0, 188, 212, 0.2);
 }
 
-/* Login Button */
 .login-button {
     background: linear-gradient(135deg, #00bcd4, #008c9e);
     padding: 12px 25px;
@@ -882,7 +855,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Mobil Menü */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -897,7 +869,6 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-/* Mobil Menü Açıkken */
 .navigation-links.open {
     display: flex;
     flex-direction: column;
@@ -911,7 +882,7 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     animation: fadeIn 0.3s ease-in-out;
 }
-/* Hero Banner */
+
 .hero-banner {
     width: 90%;
     max-width: 1200px;
@@ -964,7 +935,6 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Hakkında Bölümü */
 .about-platform {
     width: 90%;
     max-width: 800px;
@@ -984,7 +954,6 @@ body {
     color: #ccc;
 }
 
-/* Özellikler Bölümü */
 .platform-features {
     width: 90%;
     max-width: 1100px;
@@ -1028,7 +997,6 @@ body {
     color: #ccc;
 }
 
-/* Kayıt Ol CTA */
 .signup-call-to-action {
     width: 90%;
     max-width: 700px;
@@ -1049,7 +1017,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Footer */
 .main-footer {
     width: 100%;
     text-align: center;
@@ -1060,7 +1027,6 @@ body {
     margin-top: 40px;
 }
 
-/* Mobil Uyumluluk */
 @media screen and (max-width: 1024px) {
     .navigation-links {
         display: none;
@@ -1396,7 +1362,6 @@ body {
         });
     }
 
-    // Sayfa başlangıcında ana sayfa görünsün
     if (sessionStorage.getItem('location')) {
         navigateTo(sessionStorage.getItem('location'));
     }else {
@@ -1405,7 +1370,6 @@ body {
 
 
     
-    // HTML içinde onclick kullanıyorsan, bunları global yap
     window.navigateTo = navigateTo;
 });
 
@@ -1518,27 +1482,22 @@ document.getElementById("forget-code-form").addEventListener("submit", function(
 document.getElementById("refresh-password-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // Form verilerini al
     const formData = new FormData(event.target);
 
-    // Yeni şifre ve şifre tekrarı
     const newPassword = formData.get('new-password');
     const confirmNewPassword = formData.get('confirm-new-password');
 
-    // Şifrelerin eşleşip eşleşmediğini kontrol et
     if (newPassword !== confirmNewPassword) {
         document.querySelector('.refresh-password-error').textContent = "New passwords do not match.";
         document.querySelector('.refresh-password-error').style.display = "block";
-        return; // Şifreler eşleşmiyorsa işlemi durdur
+        return; 
     }
 
-    // Kullanıcı bilgilerini hazırla
     const data = {
         email: sessionStorage.getItem('email'),
-        newPassword: newPassword // Yeni şifre
+        newPassword: newPassword 
     };
 
-    // API'ye istek gönder
     fetch("http://your-server-adres/api/login/password/resfresh", {
         method: "POST",
         headers: {
@@ -1637,11 +1596,11 @@ function toggleLeftContainer() {
     const button = document.querySelector('.toggle-btn');
     button.classList.toggle('rotated');
     const leftContainer = document.querySelector(".left-container");
-    leftContainer.classList.toggle("open"); // Açma/Kapama
+    leftContainer.classList.toggle("open");
     if (leftContainer.classList.contains('open')) {
-        button.style.left = "325px"; // Açılınca içeride kalacak
+        button.style.left = "325px"; 
     } else {
-        button.style.left = "0px"; // Kapanınca dışarı çıkacak
+        button.style.left = "0px"; 
     }
 }
 
@@ -1658,7 +1617,6 @@ async function fetchProfileData(email, Allow = true) {
             }
         }
 
-        // Email bilgisini GET isteği ile URL içinde gönderiyoruz
         const url = `http://your-server-adres/api/profile/get?email=${encodeURIComponent(email)}`;
 
         const response = await fetch(url, {
@@ -1674,10 +1632,8 @@ async function fetchProfileData(email, Allow = true) {
 
         const data = await response.json();
 
-        // Check if data contains profileImage and name, then update UI
         updateProfileUI(data);
 
-        // Store the profile data in sessionStorage
         sessionStorage.setItem('profileData', JSON.stringify(data));
 
     } catch (error) {
@@ -1696,7 +1652,6 @@ function updateProfileUI(data) {
         }
     }
 
-    // Update the username if it exists
     
 }
 
@@ -1829,8 +1784,8 @@ async function handleUserClick(event) {
 
     if (!event.target.classList.contains('friend-selected')) return;
 
-    const toEmail = event.target.getAttribute('email').trim(); // Get email from attribute
-    const fromEmail = sessionStorage.getItem('email'); // Get sender email from sessionStorage
+    const toEmail = event.target.getAttribute('email').trim(); 
+    const fromEmail = sessionStorage.getItem('email'); 
 
     readMyMessages(toEmail, fromEmail);
 
@@ -1856,7 +1811,7 @@ async function handleUserClick(event) {
     }
 
     chatBox.style.display = 'flex';
-    chatBox.innerHTML = ''; // Clear previous content
+    chatBox.innerHTML = ''; 
 
     const loadingMessage = document.createElement('div');
     loadingMessage.textContent = 'Loading messages...';
@@ -1875,7 +1830,7 @@ async function handleUserClick(event) {
       const result = await response.json();
       console.log('Server response:', result);
 
-      chatBox.innerHTML = ''; // Clear loading message
+      chatBox.innerHTML = ''; 
 
       if (result.length === 0) {
         const noMessagesDiv = document.createElement('div');
@@ -1898,7 +1853,7 @@ async function handleUserClick(event) {
           chatBox.appendChild(activityDiv);
         });
 
-        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the last message
+        chatBox.scrollTop = chatBox.scrollHeight; 
         fetchFriendsData(sessionStorage.getItem('email'),true);
       }
     } catch (error) {
@@ -1921,12 +1876,11 @@ async function getUnreadMessagesCount(fromEmail, toEmail) {
         const result = await response.json();
         console.log('Full server response:', result);
 
-        // Eğer API bir dizi döndürüyorsa, ilk elemanı al
         const unreadCount = Array.isArray(result) ? result[0]?.unreadMessages : result.unreadMessages;
 
         if (!unreadCount || unreadCount === 0) {
             console.log(`No unread messages.`);
-            return 0; // Boş dönüş yaparak hataları önlüyoruz
+            return 0; 
         } else {
             console.log(`Unread messages: ${unreadCount}`);
             return unreadCount;
@@ -1935,16 +1889,16 @@ async function getUnreadMessagesCount(fromEmail, toEmail) {
     } catch (error) {
         console.error('Error:', error);
         showErrorMessage('An error occurred while fetching messages.');
-        return 0; // Hata olursa sıfır dön
+        return 0; 
     }
 }
 
 async function readMyMessages(fromEmail, toEmail) {
     try {
-        const response = await fetch(`http://your-server-adres/api/chat/markAsRead`, { // Doğru endpoint olmalı
+        const response = await fetch(`http://your-server-adres/api/chat/markAsRead`, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sender: fromEmail, receiver: toEmail }) // Body eklendi
+            body: JSON.stringify({ sender: fromEmail, receiver: toEmail }) 
         });
 
         if (!response.ok) {
@@ -1953,12 +1907,12 @@ async function readMyMessages(fromEmail, toEmail) {
 
         const result = await response.json();
         console.log('Messages marked as read:', result);
-        return result; // Başarı durumunda sonucu döndür
+        return result; 
 
     } catch (error) {
         console.error('Error:', error);
         showErrorMessage('An error occurred while marking messages as read.');
-        return null; // Hata durumunda null dön
+        return null; 
     }
 }
 
@@ -2038,14 +1992,12 @@ async function saveProfileData() {
 </script>
 
 <script>
-    // Socket.io bağlantısını başlatıyoruz
-    const socket = io('http://your-server-adres'); // Server'ın adresi
     
-    // Kullanıcı adı ve alıcı bilgisi
+    const socket = io('http://your-server-adres'); 
+    
     let username;
     let recipient;
     
-    // Kullanıcı adı girildikten sonra chat'e katıl
     function joinChat(){
     if (username) {
       socket.emit('join', username);
@@ -2054,7 +2006,6 @@ async function saveProfileData() {
     }
     }
     
-    // Mesaj gönderme işlemi
     function sendPrivateMessage() {
       readMyMessages(recipient, username);
       recipient = sessionStorage.getItem('recipient');
@@ -2062,22 +2013,19 @@ async function saveProfileData() {
       const message = messageInput.value;
       if (recipient && message) {
         socket.emit('private message', { toUsername: recipient, message }, (response) => {
-          console.log(response.message); // Mesaj durumu
+          console.log(response.message); 
         });
     
-        // Gönderilen mesajı ekrana ekle
-        appendMessage(recipient, { from: username, message }, true); // Gönderen kullanıcı
-        messageInput.value = ''; // Mesaj kutusunu temizle
+        appendMessage(recipient, { from: username, message }, true); 
+        messageInput.value = ''; 
       }
     }
     
-    // Gelen mesajları gösterme
     socket.on('chat message', (messageData) => {
-      appendMessage(messageData.from, messageData, false); // Gelen mesaj
+      appendMessage(messageData.from, messageData, false); 
     });
     
 
-    // Mesajları ekrana eklemek
     function appendMessage(chatUser, messageData, isMyMessage) {
       const chatBox = document.getElementById(`chatbox-${chatUser}`);
       
@@ -2102,7 +2050,7 @@ async function saveProfileData() {
       messageElement.appendChild(messageText);
       chatBox.appendChild(messageElement);
       
-      chatBox.scrollTop = chatBox.scrollHeight; // Son mesaja kaydır
+      chatBox.scrollTop = chatBox.scrollHeight; 
     }
     
 </script>
