@@ -5,8 +5,6 @@ This project is a chat application that allows users to make new friends, and in
 ## Features
 
 - **Real-time Messaging**: Communicate instantly with friends.
-- **Story Sharing**: Share photos, videos, and text.
-- **Follow and Gain Followers**: Follow other users and discover their content.
 - **Profile Management**: Edit and update your profile information.
 - **Friend Management**: Add and manage friends.
 
