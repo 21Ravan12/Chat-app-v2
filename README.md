@@ -1,5 +1,3 @@
-This is an old project and does not describe my products.
----
 # Social Media Platform - Chat App (Version 2)
 
 This project is a chat application that allows users to make new friends, and interact globally. It includes features such as real-time messaging, story sharing, and the ability to follow and gain followers.
